@@ -193,7 +193,7 @@ h2 em { color: var(--clay); }
 .carousel-viewport:focus-visible { box-shadow: 0 0 0 2px var(--clay); }
 .carousel-track { display: flex; align-items: flex-start; gap: 18px; width: max-content; min-width: 100%; padding: 2px 2px 8px; }
 .carousel-track > * { scroll-snap-align: start; }
-.carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; color: var(--ink-soft); font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
+.carousel-controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; color: var(--ink-soft); font-size: 10px; text-transform: uppercase; letter-spacing: .14em; }
 .carousel-controls > div { display: flex; gap: 8px; }
 .carousel-controls button { display: grid; place-items: center; width: 36px; height: 36px; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 50%; transition: color .2s ease, background .2s ease, transform .2s var(--ease-out); }
 .carousel-controls button:hover:not(:disabled) { color: var(--paper); background: var(--ink); transform: translateY(-2px); }

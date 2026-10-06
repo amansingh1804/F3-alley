@@ -42,6 +42,13 @@ export function CarouselRail({ children, className, label = "Browse", dark = fal
 
   return (
     <div className={cn("carousel-rail", dark && "carousel-rail-dark", className)}>
+      <div className="carousel-controls">
+        <span>{label}</span>
+        <div>
+          <button type="button" onClick={() => move(-1)} disabled={!canPrev} aria-label={`Previous ${label.toLowerCase()}`}><ArrowLeft size={16} /></button>
+          <button type="button" onClick={() => move(1)} disabled={!canNext} aria-label={`Next ${label.toLowerCase()}`}><ArrowRight size={16} /></button>
+        </div>
+      </div>
       <div
         ref={viewportRef}
         className="carousel-viewport"
@@ -53,13 +60,6 @@ export function CarouselRail({ children, className, label = "Browse", dark = fal
         }}
       >
         <div className="carousel-track">{children}</div>
-      </div>
-      <div className="carousel-controls">
-        <span>{label}</span>
-        <div>
-          <button type="button" onClick={() => move(-1)} disabled={!canPrev} aria-label={`Previous ${label.toLowerCase()}`}><ArrowLeft size={16} /></button>
-          <button type="button" onClick={() => move(1)} disabled={!canNext} aria-label={`Next ${label.toLowerCase()}`}><ArrowRight size={16} /></button>
-        </div>
       </div>
     </div>
   );
