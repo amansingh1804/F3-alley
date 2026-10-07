@@ -133,52 +133,42 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
           </Reveal>
         </div>
         {type === "brand" && (item as typeof brands[number]).menuItems && (
-          <div className="container" style={{ marginTop: '6rem', paddingBottom: '4rem' }}>
-            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl" style={{ fontFamily: 'var(--serif)' }}>Menu</h3></Reveal>
-            <Reveal delay={100}><p className="mt-3.5 text-pretty text-center text-muted-foreground text-xl tracking-[-0.015em] sm:text-lg md:text-2xl" style={{ color: 'var(--ink-soft)' }}>Indulge in our finest selections</p></Reveal>
+          <div className="container" style={{ marginTop: '5rem', paddingBottom: '6rem' }}>
+            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl mb-14" style={{ fontFamily: 'var(--serif)', color: '#e8196b' }}>More Desserts. More Reasons to Indulge!</h3></Reveal>
             
-            <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-              {((item as typeof brands[number]).menuItems || []).map((dish, index) => {
-                const colorMap = [
-                  { border: "border-blue-200", bg: "bg-blue-50", text: "text-blue-500", imgBg: "bg-blue-100" },
-                  { border: "border-green-600/30", bg: "bg-green-50", text: "text-green-600", imgBg: "bg-green-100" },
-                  { border: "border-red-200", bg: "bg-red-50", text: "text-red-500", imgBg: "bg-red-100" },
-                  { border: "border-amber-600/30", bg: "bg-amber-50", text: "text-amber-600", imgBg: "bg-amber-100" },
-                  { border: "border-purple-200", bg: "bg-purple-50", text: "text-purple-500", imgBg: "bg-purple-100" },
-                ];
-                const c = colorMap[index % colorMap.length];
-                const isTall = index === 2 || index === 9 || index === 14;
-                const isWide = index === 6 || index === 11;
-                
-                let spanClasses = "";
-                if (isTall) spanClasses = "row-span-2";
-                if (isWide) spanClasses = "md:col-span-2";
-                
-                return (
-                  <Reveal key={index} delay={(index % 4) * 50} className={`${spanClasses} h-full`}>
-                    <div className={`rounded-xl border ${c.border} ${c.bg} p-6 py-7 flex flex-col h-full w-full overflow-hidden`}>
-                      {dish.image ? (
-                        <img src={dish.image} alt={dish.name} className={`mb-7 w-full object-cover rounded-xl shadow-sm ${isTall ? 'h-64' : 'h-40'}`} />
-                      ) : (
-                        <div className={`mb-7 w-full rounded-xl ${c.imgBg} flex flex-col items-center justify-center ${c.text} ${isTall ? 'h-64' : 'h-40'} font-medium tracking-wide`}>
-                           <span className="opacity-80">Image Pending</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+              {Object.entries(
+                ((item as typeof brands[number]).menuItems || []).reduce((acc, dish) => {
+                  if (!acc[dish.category]) acc[dish.category] = [];
+                  acc[dish.category].push(dish);
+                  return acc;
+                }, {} as Record<string, typeof (item as any)['menuItems']>)
+              ).map(([category, items], catIdx) => (
+                <div key={catIdx} className={`flex flex-col ${catIdx === 2 ? 'bg-[#eee3d1] p-6 rounded-2xl -mx-6 md:mx-0' : ''}`}>
+                  <Reveal><h4 className="text-2xl font-bold mb-8 text-center" style={{ color: '#e8196b', fontFamily: 'var(--serif)' }}>{category}</h4></Reveal>
+                  <div className="flex flex-col gap-8">
+                    {items.map((dish: any, index: number) => (
+                      <Reveal key={index} delay={(index % 3) * 100}>
+                        <div className="flex flex-row items-center gap-5">
+                          <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
+                            <div className="absolute inset-0 bg-[#f6ebda] rounded-t-full scale-100 origin-bottom mt-3" style={{ zIndex: 0 }}></div>
+                            {dish.image ? (
+                              <img src={dish.image} alt={dish.name} className="relative z-10 w-full h-full object-contain scale-110 drop-shadow-lg" />
+                            ) : (
+                              <div className="relative z-10 w-full h-full bg-[#f6ebda] rounded-t-full flex items-center justify-center text-xs font-medium text-[#e8196b] text-center p-2">Image Pending</div>
+                            )}
+                          </div>
+                          <div className="flex flex-col flex-1">
+                            <h5 className="font-bold text-base leading-tight mb-1" style={{ color: '#321c15' }}>{dish.name}</h5>
+                            <p className="text-[11px] leading-snug mb-1 opacity-80" style={{ color: '#321c15' }}>{dish.note}</p>
+                            <span className="font-bold text-sm" style={{ color: '#e8196b' }}>{dish.price}</span>
+                          </div>
                         </div>
-                      )}
-                      
-                      <div className="flex flex-col flex-grow">
-                        <span className={`text-sm font-bold uppercase tracking-wider mb-2 ${c.text}`}>{dish.category}</span>
-                        <span className="font-medium text-3xl leading-tight mb-4" style={{ color: 'var(--ink)' }}>{dish.name}</span>
-                        <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--ink-soft)' }}>
-                          {dish.note}
-                        </p>
-                        <div className="mt-auto pt-2">
-                          <span className={`font-medium text-2xl ${c.text} bg-white px-5 py-2 rounded-full shadow-sm border ${c.border}`}>{dish.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                );
-              })}
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
