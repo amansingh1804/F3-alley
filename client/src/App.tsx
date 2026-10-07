@@ -130,11 +130,7 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
                 </div>
               </div>
             )}
-            {type === "brand" && slug === "baskin-robbins" && (
-              <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
-                <BaskinMenu />
-              </div>
-            )}
+            {type === "brand" && slug === "baskin-robbins" && <BaskinMenu />}
             <Link href={type === "brand" ? "/brands" : "/events"} className="arrow-button"><span>Back to {type === "brand" ? "all brands" : "what's on"}</span><ArrowUpRight size={16} /></Link>
           </Reveal>
         </div>
