@@ -1,148 +1,192 @@
-.baskin-menu-container {
+.baskin-menu-vertical {
   font-family: 'DM Sans', sans-serif;
-  background-color: #fffaf0; /* very light beige matching the edge */
-  padding: 20px;
+  background-color: #fdfaf3;
   color: #333;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-}
-
-.baskin-section-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
-  margin-top: 0;
-  margin-bottom: 20px;
-  line-height: 1.1;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
 }
 
 .pink-text {
-  color: #d1136b; /* vibrant pink from the menu */
+  color: #d1136b;
 }
 
-/* Grid Layout */
-.baskin-grid {
+/* Banner */
+.baskin-banner {
+  background: linear-gradient(135deg, #fdf6e7 0%, #f7e6cc 100%);
+  padding: 60px 40px;
+  position: relative;
+  text-align: left;
+}
+
+.new-badge-large {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #d1136b;
+  color: #fff;
+  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transform: rotate(-15deg);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px rgba(209, 19, 107, 0.3);
+}
+
+.banner-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.banner-title span {
+  font-size: 2.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.banner-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #555;
+  margin: 0;
+}
+
+/* Sections */
+.vertical-section {
+  padding: 50px 40px;
+  text-align: center;
+  position: relative;
+}
+
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.5rem;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.section-subheading {
+  font-size: 1rem;
+  color: #666;
+  margin: 0 0 40px;
+  font-style: italic;
+}
+
+/* Backgrounds */
+.section-indulgent {
+  background-color: #fffaf0;
+}
+.section-kids {
+  background: linear-gradient(180deg, #fce4ec 0%, #ffe4e1 100%);
+}
+.section-gelato {
+  background-color: #fffaf0;
+}
+.section-iconic {
+  background: linear-gradient(180deg, #fdf6e7 0%, #fffcf8 100%);
+}
+.section-classics {
+  background-color: #fffaf0;
+}
+.section-fruity {
+  background: linear-gradient(180deg, #fff0f5 0%, #fff 100%);
+}
+.section-myo {
+  background-color: #fffaf0;
+  padding-bottom: 60px;
+}
+
+/* Grids */
+.items-grid-3 {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
-.bottom-row-grid {
-  grid-column: 1 / -1;
+.items-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.items-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-.right-column-top {
+/* Items */
+.menu-item {
+  background: transparent;
+}
+
+.center-align {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-/* Section styling */
-.baskin-section {
-  border-radius: 20px;
-  padding: 24px;
-  background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  position: relative;
-}
-
-.indulgent-section {
-  background: linear-gradient(135deg, #fdf6e7 0%, #f7e6cc 100%);
-  border: 1px solid #f0dec0;
-}
-
-.kids-section {
-  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
-}
-
-.gelato-section {
-  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
-}
-
-.iconic-section {
-  background: #fffcf8;
-}
-.classics-section {
-  background: #fdfaf3;
-}
-.fruity-section {
-  background: #fff6f0;
-}
-.myo-section {
-  background: #fff;
-  text-align: center;
-}
-
-/* Typography and items */
-.menu-item {
-  margin-bottom: 16px;
+  align-items: center;
 }
 
 .menu-item h3 {
   font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 0 0 10px;
   color: #1a1a1a;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .menu-item p {
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: #555;
-  margin: 0 0 8px;
+  margin: 0 0 15px;
+  flex-grow: 1;
 }
 
 .menu-item p.subtitle {
   font-weight: 600;
   color: #333;
+  margin-bottom: 8px;
 }
 
 .price {
-  font-weight: 700;
+  font-weight: 800;
   color: #d1136b;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .price-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
+  margin-top: auto;
 }
+
+.justify-center {
+  justify-content: center;
+}
+
 .price-row small {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #d1136b;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-.align-center {
-  align-items: center;
-}
-
-/* Badges */
-.new-badge {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  background-color: #d1136b;
-  color: #fff;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transform: rotate(-15deg);
-  font-size: 1.2rem;
-  box-shadow: 0 4px 8px rgba(209, 19, 107, 0.3);
-}
-
+/* Tags */
 .tag-pill {
   background-color: #d1136b;
   color: #fff;
-  font-size: 0.75rem;
-  padding: 4px 8px;
+  font-size: 0.8rem;
+  padding: 4px 10px;
   border-radius: 12px;
   font-weight: bold;
 }
@@ -150,78 +194,93 @@
 .tag-pill-pink {
   background-color: #d1136b;
   color: #fff;
-  font-size: 0.9rem;
-  padding: 6px 12px;
+  font-size: 1rem;
+  padding: 8px 16px;
   border-radius: 20px;
   font-weight: bold;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-/* Make Your Own Sundae Specifics */
-.myo-steps {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Kids Section */
+.kids-content {
+  display: flex;
+  justify-content: flex-end;
+}
+.kids-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   text-align: left;
 }
+.kids-list .menu-item {
+  align-items: flex-start;
+}
 
-.myo-steps li {
+/* Make Your Own Sundae */
+.myo-steps-horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.step-item {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
-  font-weight: 600;
-  font-size: 1rem;
+  gap: 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .step-num {
   background-color: #d1136b;
   color: white;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   line-height: 1.1;
-  margin-right: 15px;
-  box-shadow: 0 2px 6px rgba(209, 19, 107, 0.4);
+  box-shadow: 0 4px 10px rgba(209, 19, 107, 0.3);
 }
 
 .myo-footer {
-  margin-top: 20px;
+  margin: 0 auto;
   background-color: #d1136b;
   color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 10px 24px;
+  border-radius: 30px;
   font-style: italic;
   font-weight: bold;
-}
-
-/* Inner Layouts */
-.indulgent-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  font-size: 1.2rem;
+  display: inline-block;
+  transform: rotate(-2deg);
 }
 
 /* Responsiveness */
 @media (max-width: 1024px) {
-  .baskin-grid {
-    grid-template-columns: 1fr;
-  }
-  .bottom-row-grid {
+  .items-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .bottom-row-grid {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+  .banner-title span {
+    font-size: 1.8rem;
+  }
+  .items-grid-3, .items-grid-2, .kids-list {
     grid-template-columns: 1fr;
   }
-  .indulgent-grid {
-    grid-template-columns: 1fr;
+  .myo-steps-horizontal {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 }
