@@ -17,18 +17,16 @@ const colors = {
 const ProductCard = ({ product, index, large = false }: { product: any, index: number, large?: boolean }) => {
   return (
     <Reveal delay={(index % 4) * 50} className={`flex flex-col ${large ? 'md:col-span-2' : ''}`}>
-      <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden flex items-end justify-center mb-5" style={{ backgroundColor: colors.lightBeige }}>
-        {product.image ? (
+      {product.image && (
+        <div className="relative w-full aspect-[4/3] flex items-end justify-center mb-5">
           <img 
             src={product.image} 
             alt={product.name} 
             className="w-full h-full object-contain hover:scale-105 transition-transform duration-700 origin-bottom" 
             style={{ padding: large ? '1rem' : '2rem', filter: 'drop-shadow(0 10px 15px rgba(58,36,29,0.15))' }}
           />
-        ) : (
-          <div className="flex items-center justify-center w-full h-full text-sm font-medium" style={{ color: colors.primaryPink }}>Image Pending</div>
-        )}
-      </div>
+        </div>
+      )}
       <h3 className="font-serif text-2xl md:text-[28px] leading-tight mb-2" style={{ color: colors.darkBrown }}>{product.name}</h3>
       <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: colors.nearBlack, opacity: 0.85, fontFamily: 'var(--sans)' }}>
         {product.description}
@@ -43,20 +41,16 @@ const ProductCard = ({ product, index, large = false }: { product: any, index: n
 const RowProductCard = ({ product, index }: { product: any, index: number }) => {
   return (
     <Reveal delay={(index % 4) * 50} className="flex flex-row items-center gap-6">
-      <div className="relative shrink-0 w-32 h-32 md:w-36 md:h-36 flex items-center justify-center">
-        {/* Soft rounded arch background */}
-        <div className="absolute inset-0 rounded-t-full scale-95 origin-bottom mt-4" style={{ backgroundColor: colors.warmBeige, zIndex: 0 }}></div>
-        {product.image ? (
+      {product.image && (
+        <div className="relative shrink-0 w-32 h-32 md:w-36 md:h-36 flex items-center justify-center">
           <img 
             src={product.image} 
             alt={product.name} 
             className="relative z-10 w-full h-full object-contain hover:scale-[1.03] transition-transform duration-700" 
             style={{ filter: 'drop-shadow(0 8px 12px rgba(58,36,29,0.1))' }}
           />
-        ) : (
-          <div className="relative z-10 w-full h-full rounded-t-full flex items-center justify-center text-xs font-medium" style={{ color: colors.primaryPink, backgroundColor: colors.lightBeige }}>Image Pending</div>
-        )}
-      </div>
+        </div>
+      )}
       <div className="flex flex-col">
         <h4 className="font-bold text-lg md:text-xl leading-snug mb-1" style={{ color: colors.darkBrown, fontFamily: 'var(--sans)' }}>{product.name}</h4>
         {product.badge && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-1 w-max" style={{ backgroundColor: colors.primaryPink, color: colors.white }}>{product.badge}</span>}
@@ -125,8 +119,6 @@ export const BaskinMenu = () => {
                <p className="text-xs italic" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.fairytale.note}</p>
              </div>
              <div className="w-full md:w-1/2 relative flex justify-center">
-               {/* Organic blob background */}
-               <div className="absolute inset-0 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] scale-[0.85] origin-center mt-12" style={{ backgroundColor: colors.lightBeige, zIndex: 0 }}></div>
                <img src={baskinMenuData.kidsSundaes.fairytale.image} alt="Fairytale Sundaes" className="relative z-10 w-full max-w-[320px] object-contain hover:scale-105 transition-transform duration-500" />
              </div>
           </Reveal>
@@ -146,7 +138,6 @@ export const BaskinMenu = () => {
                <p className="text-xs italic" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.lollipop.note}</p>
              </div>
              <div className="w-full md:w-1/2 relative flex justify-center">
-               <div className="absolute inset-0 rounded-[60%_40%_30%_70%/60%_30%_70%_40%] scale-[0.85] origin-center mt-8" style={{ backgroundColor: colors.warmBeige, zIndex: 0 }}></div>
                <img src={baskinMenuData.kidsSundaes.lollipop.image} alt="Lollipop Sundaes" className="relative z-10 w-full max-w-[320px] object-contain hover:scale-105 transition-transform duration-500" />
              </div>
           </Reveal>
@@ -205,13 +196,11 @@ export const BaskinMenu = () => {
                       {dish.description}
                     </p>
                     <span className="font-bold text-base mb-6" style={{ color: colors.primaryPink, fontFamily: 'var(--sans)' }}>{dish.price}</span>
-                    <div className="relative w-full aspect-[4/3] flex justify-center max-w-[250px]">
-                      {dish.image ? (
+                    {dish.image && (
+                      <div className="relative w-full aspect-[4/3] flex justify-center max-w-[250px]">
                         <img src={dish.image} alt={dish.name} className="relative z-10 w-full h-full object-contain hover:scale-105 transition-transform duration-500" />
-                      ) : (
-                        <div className="w-full h-full bg-white/30 rounded-3xl flex items-center justify-center text-xs text-pink-500">Image Pending</div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                  </Reveal>
                ))}
             </div>
