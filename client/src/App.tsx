@@ -142,8 +142,8 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
                   if (!acc[dish.category]) acc[dish.category] = [];
                   acc[dish.category].push(dish);
                   return acc;
-                }, {} as Record<string, typeof (item as any)['menuItems']>)
-              ).map(([category, items], catIdx) => (
+                }, {} as any)
+              ).map(([category, items]: [string, any], catIdx) => (
                 <div key={catIdx} className={`flex flex-col ${catIdx === 2 ? 'bg-[#eee3d1] p-6 rounded-2xl -mx-6 md:mx-0' : ''}`}>
                   <Reveal><h4 className="text-2xl font-bold mb-8 text-center" style={{ color: '#e8196b', fontFamily: 'var(--serif)' }}>{category}</h4></Reveal>
                   <div className="flex flex-col gap-8">
