@@ -1,7 +1,7 @@
 import React from 'react';
 import { baskinMenuData } from './data';
 import { ArrowUpRight } from 'lucide-react';
-import Reveal from '../Reveal'; // Adjust import if needed
+import { Reveal } from '../Reveal';
 
 const colors = {
   primaryPink: '#D91B72',
