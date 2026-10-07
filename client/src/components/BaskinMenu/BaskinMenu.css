@@ -1,0 +1,227 @@
+.baskin-menu-container {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #fffaf0; /* very light beige matching the edge */
+  padding: 20px;
+  color: #333;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.baskin-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.pink-text {
+  color: #d1136b; /* vibrant pink from the menu */
+}
+
+/* Grid Layout */
+.baskin-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+}
+
+.bottom-row-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.right-column-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section styling */
+.baskin-section {
+  border-radius: 20px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.indulgent-section {
+  background: linear-gradient(135deg, #fdf6e7 0%, #f7e6cc 100%);
+  border: 1px solid #f0dec0;
+}
+
+.kids-section {
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+}
+
+.gelato-section {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+}
+
+.iconic-section {
+  background: #fffcf8;
+}
+.classics-section {
+  background: #fdfaf3;
+}
+.fruity-section {
+  background: #fff6f0;
+}
+.myo-section {
+  background: #fff;
+  text-align: center;
+}
+
+/* Typography and items */
+.menu-item {
+  margin-bottom: 16px;
+}
+
+.menu-item h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.menu-item p {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #555;
+  margin: 0 0 8px;
+}
+
+.menu-item p.subtitle {
+  font-weight: 600;
+  color: #333;
+}
+
+.price {
+  font-weight: 700;
+  color: #d1136b;
+  font-size: 1.1rem;
+}
+
+.price-row {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.price-row small {
+  display: block;
+  font-size: 0.7rem;
+  color: #d1136b;
+  margin-bottom: 2px;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* Badges */
+.new-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background-color: #d1136b;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transform: rotate(-15deg);
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(209, 19, 107, 0.3);
+}
+
+.tag-pill {
+  background-color: #d1136b;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+.tag-pill-pink {
+  background-color: #d1136b;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+/* Make Your Own Sundae Specifics */
+.myo-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.myo-steps li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.step-num {
+  background-color: #d1136b;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  line-height: 1.1;
+  margin-right: 15px;
+  box-shadow: 0 2px 6px rgba(209, 19, 107, 0.4);
+}
+
+.myo-footer {
+  margin-top: 20px;
+  background-color: #d1136b;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Inner Layouts */
+.indulgent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .baskin-grid {
+    grid-template-columns: 1fr;
+  }
+  .bottom-row-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .bottom-row-grid {
+    grid-template-columns: 1fr;
+  }
+  .indulgent-grid {
+    grid-template-columns: 1fr;
+  }
+}

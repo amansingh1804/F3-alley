@@ -1,248 +1,230 @@
 import React from 'react';
-import { baskinMenuData } from './data';
-import { ArrowUpRight } from 'lucide-react';
-import { Reveal } from '../Reveal';
+import './BaskinMenu.css';
 
-const colors = {
-  primaryPink: '#D91B72',
-  secondaryPink: '#E83B86',
-  cream: '#FFF7E6',
-  warmBeige: '#F3E5C8',
-  lightBeige: '#FAF1DD',
-  darkBrown: '#3A241D',
-  nearBlack: '#241B18',
-  white: '#FFFFFF'
-};
-
-const ProductCard = ({ product, index, large = false }: { product: any, index: number, large?: boolean }) => {
+export function BaskinMenu() {
   return (
-    <Reveal delay={(index % 4) * 50} className={`flex flex-col ${large ? 'md:col-span-2' : ''}`}>
-      {product.image && (
-        <div className="relative w-full aspect-[4/3] flex items-end justify-center mb-5">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="w-full h-full object-contain hover:scale-105 transition-transform duration-700 origin-bottom" 
-            style={{ padding: large ? '1rem' : '2rem', filter: 'drop-shadow(0 10px 15px rgba(58,36,29,0.15))' }}
-          />
+    <div className="baskin-menu-container">
+      <div className="baskin-grid">
+        
+        {/* Top Left: All New Indulgent Desserts */}
+        <section className="baskin-section indulgent-section">
+          <div className="new-badge">NEW</div>
+          <h2 className="baskin-section-title pink-text">All New Indulgent Desserts</h2>
+          
+          <div className="indulgent-grid">
+            <div className="menu-item">
+              <h3>Tiramisu Cheesecake<br/>Sundae</h3>
+              <p>Velvety Tiramisu Cheesecake served with Biscoff™ ice cream topped with butterscotch sauce & biscuit crumble.</p>
+              <span className="price">₹250</span>
+            </div>
+            
+            <div className="menu-item">
+              <h3>Chocolate Muffin Sundae</h3>
+              <p>Decadent Double Chocolate Muffin served with the iconic Mississippi Mud ice cream topped with hot fudge, almond bits & choco chips.</p>
+              <span className="price">₹340</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Blueberry Muffin<br/>Sundae</h3>
+              <p>Centre-filled Blueberry Crumble Muffin paired with Blueberry Cheesecake Gelato topped with blueberry sauce & wheat crispies.</p>
+              <span className="price">₹325</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Walnut Brownie Sundae</h3>
+              <p>Oh-so-fudgy Walnut Brownie paired with Cookies 'N Cream ice cream topped with hot fudge & cookie crumble.</p>
+              <span className="price">₹275</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Dubai Chocolate<br/>Gelato Sundae</h3>
+              <p>Dubai Chocolate Gelato topped with fudgy chocolate sauce, crispy pistachio & chocolate chips.</p>
+              <span className="price">₹210</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Top Right: Kids & Gelato */}
+        <div className="right-column-top">
+          <section className="baskin-section kids-section">
+            <h2 className="baskin-section-title pink-text">Kids Special Sundaes</h2>
+            
+            <div className="menu-item">
+              <h3>Fairytale Sundaes</h3>
+              <p className="subtitle">Princess | Knight | Mermaid | Unicorn</p>
+              <p>Your favourites scoop turned into a magical sundae with our fairytale toppers.</p>
+              <div className="price-row">
+                <div>
+                  <small>(Basic Scoop)</small>
+                  <span className="price">₹155</span>
+                </div>
+                <div>
+                  <small>(Regular Scoop)</small>
+                  <span className="price">₹195</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="menu-item">
+              <h3>Vanilla Splish Splash<br/>Cotton Candy Shooting Star</h3>
+              <p>Also available in other flavours.</p>
+            </div>
+
+            <div className="menu-item">
+              <h3>Lollipop Sundaes</h3>
+              <p>More fun, more yum! This sundae comes with your favourite ice cream, lollipop, crunchy wafer roll, colourful sprinkles and more...</p>
+              <div className="price-row">
+                <div>
+                  <small>(Basic Scoop)</small>
+                  <span className="price">₹115</span>
+                </div>
+                <div>
+                  <small>(Regular Scoop)</small>
+                  <span className="price">₹155</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="menu-item">
+              <h3>Very Berry Strawberry -<br/>Alphonso Mango</h3>
+              <p>Also available in other flavours.</p>
+            </div>
+          </section>
+
+          <section className="baskin-section gelato-section">
+            <h2 className="baskin-section-title pink-text">Italian Gelato Sundaes</h2>
+            
+            <div className="menu-item">
+              <h3>Berry Me in Cheesecake</h3>
+              <p>Blueberry Cheesecake Gelato, paired with a blueberry compote and NY style cheesecake cubes.</p>
+            </div>
+
+            <div className="menu-item">
+              <h3>Cotton Candy Wonderland</h3>
+              <p>Italian Cotton Candy Burst Gelato with strawberry compote, colourful Gems, wafer roll & more.</p>
+            </div>
+
+            <div className="menu-item">
+              <h3>Chocolate & Roasted Hazelnut</h3>
+              <p>Italian Chocolate & Roasted Hazelnut Gelato drizzled with chocolate & caramelised hazelnuts.</p>
+              <span className="price">₹205</span>
+            </div>
+          </section>
         </div>
-      )}
-      <h3 className="font-serif text-2xl md:text-[28px] leading-tight mb-2" style={{ color: colors.darkBrown }}>{product.name}</h3>
-      <p className="text-sm leading-relaxed mb-4 flex-grow" style={{ color: colors.nearBlack, opacity: 0.85, fontFamily: 'var(--sans)' }}>
-        {product.description}
-      </p>
-      <div className="font-bold text-xl mt-auto" style={{ color: colors.primaryPink, fontFamily: 'var(--sans)' }}>
-        {product.price}
+
+        {/* Bottom Row */}
+        <div className="bottom-row-grid">
+          
+          <section className="baskin-section iconic-section">
+            <h2 className="baskin-section-title pink-text">Iconic Chocolate</h2>
+            <div className="iconic-grid">
+              <div className="menu-item">
+                <h3>Mississippi Mud -<br/>Croissant Cone Sundae</h3>
+                <p>Flaky, buttery Croissant with Mississippi Mud ice cream, topped with chocolate syrup & chocolate chips.</p>
+                <div className="price-row align-center">
+                  <span className="price">₹205</span>
+                  <span className="tag-pill">1st time in India</span>
+                </div>
+              </div>
+
+              <div className="menu-item">
+                <h3>Chocolate Lovers -<br/>Waffle Sundae</h3>
+                <p>Toasty Waffle served with Dutch Chocolate ice cream, gooey brownie chunks, chocolate chips, butterscotch & chocolate sauce.</p>
+                <span className="price">₹325</span>
+              </div>
+
+              <div className="menu-item">
+                <h3>Chocolate - Choco Lava<br/>Cake Dessert</h3>
+                <p>Warm, gooey Lava Cake with molten chocolate in the core served with a scoop of Chocolate ice cream & toppings.</p>
+                <span className="price">₹195</span>
+              </div>
+
+              <div className="menu-item">
+                <h3>Vanilla - Sizzling Brownie<br/>Dessert</h3>
+                <p>Gooey Brownie, topped with Vanilla ice cream, almond crunch, drizzled with chocolate sauce.</p>
+                <span className="price">₹220</span>
+              </div>
+
+              <div className="menu-item">
+                <h3>Vanilla Affair -<br/>Brownie Dessert</h3>
+                <p>Brownie with Vanilla ice cream, topped with hot fudge or butterscotch sauce.</p>
+                <span className="price">₹195</span>
+              </div>
+            </div>
+          </section>
+
+          <section className="baskin-section classics-section">
+            <h2 className="baskin-section-title pink-text">Popular Classics & Nuts</h2>
+            
+            <div className="menu-item">
+              <h3>Iranian Pista Kulfi Sundae</h3>
+              <p>Classic malai kulfi with a layer of vanilla ice cream and Iranian pistachio slivers, topped with rose drizzle and creamy condensed milk.</p>
+              <span className="price">₹200</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Golden Ferrero Sundae</h3>
+              <p>Irresistible Gold Medal Ribbon ice cream crowned with chocolate sauce, Ferrero Rocher crumble, whipped cream and a cherry on top.</p>
+              <span className="price">₹205</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Nutty Professor</h3>
+              <p>Roasted Californian Almond ice cream with nuts, almonds, cashews and raisins topped with hot fudge sauce and a swirl of whipped cream.</p>
+              <span className="price">₹240</span>
+            </div>
+          </section>
+
+          <section className="baskin-section fruity-section">
+            <h2 className="baskin-section-title pink-text">Fruity Summer Specials</h2>
+            
+            <div className="menu-item">
+              <h3>Mango & Cream - Gelato Sundae</h3>
+              <p>Italian Mango & Cream Gelato with mango compote, angel cake cubes, decadent sauces.</p>
+              <span className="price">₹205</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Vanilla with Mango Sauce -<br/>Cheesecake Dessert</h3>
+              <p>Baked Cheesecake with Vanilla ice cream & mango topping.</p>
+              <span className="price">₹300</span>
+            </div>
+
+            <div className="menu-item">
+              <h3>Banana 'N Strawberry -<br/>Fruit Cream Sundae</h3>
+              <p>Banana 'N Strawberry ice cream layered with a blend of fruits & fruit toppings.</p>
+              <span className="price">₹210</span>
+            </div>
+          </section>
+
+          <section className="baskin-section myo-section">
+            <h2 className="baskin-section-title pink-text">Make Your Own Sundae</h2>
+            <div className="myo-start">
+              <span className="tag-pill-pink">Starting at ₹99</span>
+            </div>
+
+            <ul className="myo-steps">
+              <li>
+                <div className="step-num">Step 1</div>
+                <div>Pick your scoop</div>
+              </li>
+              <li>
+                <div className="step-num">Step 2</div>
+                <div>Drizzle a sauce</div>
+              </li>
+              <li>
+                <div className="step-num">Step 3</div>
+                <div>Add a topping</div>
+              </li>
+            </ul>
+
+            <div className="myo-footer">
+              <p>Whipped cream & cherry on us!</p>
+            </div>
+          </section>
+
+        </div>
       </div>
-    </Reveal>
-  );
-};
-
-const RowProductCard = ({ product, index }: { product: any, index: number }) => {
-  return (
-    <Reveal delay={(index % 4) * 50} className="flex flex-row items-center gap-6">
-      {product.image && (
-        <div className="relative shrink-0 w-32 h-32 md:w-36 md:h-36 flex items-center justify-center">
-          <img 
-            src={product.image} 
-            alt={product.name} 
-            className="relative z-10 w-full h-full object-contain hover:scale-[1.03] transition-transform duration-700" 
-            style={{ filter: 'drop-shadow(0 8px 12px rgba(58,36,29,0.1))' }}
-          />
-        </div>
-      )}
-      <div className="flex flex-col">
-        <h4 className="font-bold text-lg md:text-xl leading-snug mb-1" style={{ color: colors.darkBrown, fontFamily: 'var(--sans)' }}>{product.name}</h4>
-        {product.badge && <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider mb-1 w-max" style={{ backgroundColor: colors.primaryPink, color: colors.white }}>{product.badge}</span>}
-        <p className="text-[13px] leading-relaxed mb-2" style={{ color: colors.nearBlack, opacity: 0.85, fontFamily: 'var(--sans)' }}>
-          {product.description}
-        </p>
-        <span className="font-bold text-base" style={{ color: colors.primaryPink, fontFamily: 'var(--sans)' }}>{product.price}</span>
-      </div>
-    </Reveal>
-  );
-};
-
-export const BaskinMenu = () => {
-  return (
-    <div className="baskin-menu-container w-full" style={{ backgroundColor: colors.cream, fontFamily: 'var(--sans)' }}>
-      {/* SECTION 1: All New Indulgent Desserts */}
-      <section className="container mx-auto px-6 py-24 md:py-32 border-b border-[#ebdaca]">
-        <Reveal>
-          <h2 className="text-4xl md:text-[5vw] leading-[1.1] text-center mb-16 md:mb-24" style={{ color: colors.primaryPink, fontFamily: 'var(--serif)' }}>
-            All New Indulgent Desserts
-          </h2>
-        </Reveal>
-        
-        {/* Editorial Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-16">
-          <div className="md:col-span-5 md:col-start-2">
-             <ProductCard product={baskinMenuData.newDesserts[0]} index={0} large />
-          </div>
-          <div className="md:col-span-4 md:mt-32">
-             <ProductCard product={baskinMenuData.newDesserts[1]} index={1} />
-          </div>
-          <div className="md:col-span-4 md:col-start-1 md:mt-12">
-             <ProductCard product={baskinMenuData.newDesserts[2]} index={2} />
-          </div>
-          <div className="md:col-span-4">
-             <ProductCard product={baskinMenuData.newDesserts[3]} index={3} />
-          </div>
-          <div className="md:col-span-4 md:mt-24">
-             <ProductCard product={baskinMenuData.newDesserts[4]} index={4} />
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: Kids Special Sundaes */}
-      <section className="container mx-auto px-6 py-20 md:py-28 border-b border-[#ebdaca]">
-        <Reveal>
-          <h2 className="text-4xl md:text-[4vw] leading-[1.1] text-center mb-16" style={{ color: colors.primaryPink, fontFamily: 'var(--serif)' }}>
-            Kids Special Sundaes
-          </h2>
-        </Reveal>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-5xl mx-auto">
-          {/* Fairytale */}
-          <Reveal className="flex flex-col md:flex-row gap-8 items-center">
-             <div className="w-full md:w-1/2 flex flex-col justify-center">
-               <h3 className="font-serif text-3xl mb-2" style={{ color: colors.primaryPink }}>Fairytale Sundaes</h3>
-               <h4 className="font-bold text-xl mb-3" style={{ color: colors.darkBrown }}>{baskinMenuData.kidsSundaes.fairytale.flavours}</h4>
-               <p className="text-sm leading-relaxed mb-4" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.fairytale.description}</p>
-               <div className="flex gap-4 items-baseline mb-4">
-                 <span className="text-xs uppercase font-bold" style={{ color: colors.primaryPink }}>(Small Scoop) <br/><span className="text-xl">₹155</span></span>
-                 <span className="text-xs uppercase font-bold" style={{ color: colors.primaryPink }}>(Regular Scoop) <br/><span className="text-xl">₹195</span></span>
-               </div>
-               <div className="text-sm font-bold leading-relaxed mb-2" style={{ color: colors.darkBrown }}>
-                 {baskinMenuData.kidsSundaes.fairytale.options.map((opt, i) => <div key={i}>{opt}</div>)}
-               </div>
-               <p className="text-xs italic" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.fairytale.note}</p>
-             </div>
-             <div className="w-full md:w-1/2 relative flex justify-center">
-               <img src={baskinMenuData.kidsSundaes.fairytale.image} alt="Fairytale Sundaes" className="relative z-10 w-full max-w-[320px] object-contain hover:scale-105 transition-transform duration-500" />
-             </div>
-          </Reveal>
-          
-          {/* Lollipop */}
-          <Reveal delay={100} className="flex flex-col md:flex-row gap-8 items-center">
-             <div className="w-full md:w-1/2 flex flex-col justify-center">
-               <h3 className="font-serif text-3xl mb-2" style={{ color: colors.primaryPink }}>Lollipop Sundaes</h3>
-               <p className="text-sm leading-relaxed mb-4" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.lollipop.description}</p>
-               <div className="flex gap-4 items-baseline mb-4">
-                 <span className="text-xs uppercase font-bold" style={{ color: colors.primaryPink }}>(Small Scoop) <br/><span className="text-xl">₹115</span></span>
-                 <span className="text-xs uppercase font-bold" style={{ color: colors.primaryPink }}>(Regular Scoop) <br/><span className="text-xl">₹155</span></span>
-               </div>
-               <div className="text-sm font-bold leading-relaxed mb-2" style={{ color: colors.darkBrown }}>
-                 {baskinMenuData.kidsSundaes.lollipop.options.map((opt, i) => <div key={i}>{opt}</div>)}
-               </div>
-               <p className="text-xs italic" style={{ color: colors.nearBlack }}>{baskinMenuData.kidsSundaes.lollipop.note}</p>
-             </div>
-             <div className="w-full md:w-1/2 relative flex justify-center">
-               <img src={baskinMenuData.kidsSundaes.lollipop.image} alt="Lollipop Sundaes" className="relative z-10 w-full max-w-[320px] object-contain hover:scale-105 transition-transform duration-500" />
-             </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* SECTION 3: Italian Gelato Sundaes */}
-      <section className="container mx-auto px-6 py-24 md:py-32 border-b border-[#ebdaca]">
-        <Reveal>
-          <h2 className="text-4xl md:text-[4vw] leading-[1.1] text-center mb-16" style={{ color: colors.primaryPink, fontFamily: 'var(--serif)' }}>
-            Italian Gelato Sundaes
-          </h2>
-        </Reveal>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-          {baskinMenuData.italianGelato.map((gelato, index) => (
-             <ProductCard key={index} product={gelato} index={index} />
-          ))}
-        </div>
-      </section>
-
-      {/* SECTION 4: More Desserts. More Reasons to Indulge! */}
-      <section className="container mx-auto px-6 py-24 md:py-32">
-        <Reveal>
-          <h2 className="text-4xl md:text-[4vw] leading-[1.1] text-center mb-16 md:mb-24" style={{ color: colors.primaryPink, fontFamily: 'var(--serif)' }}>
-            More Desserts. More Reasons to Indulge!
-          </h2>
-        </Reveal>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-8 lg:gap-12">
-          
-          {/* Column 1: Iconic Chocolate */}
-          <div className="flex flex-col">
-            <Reveal><h3 className="text-3xl font-serif text-center mb-12" style={{ color: colors.primaryPink }}>Iconic Chocolate</h3></Reveal>
-            <div className="flex flex-col gap-10 md:pr-4 md:border-r border-[#ebdaca]">
-               {baskinMenuData.iconicChocolate.map((dish, i) => <RowProductCard key={i} product={dish} index={i} />)}
-            </div>
-          </div>
-          
-          {/* Column 2: Popular Classics */}
-          <div className="flex flex-col">
-            <Reveal><h3 className="text-3xl font-serif text-center mb-12" style={{ color: colors.primaryPink }}>Popular Classics & Nuts</h3></Reveal>
-            <div className="flex flex-col gap-10 md:pr-4 lg:border-r border-[#ebdaca]">
-               {baskinMenuData.popularClassics.map((dish, i) => <RowProductCard key={i} product={dish} index={i} />)}
-            </div>
-          </div>
-          
-          {/* Column 3: Fruity Summer Specials */}
-          <div className="flex flex-col h-full rounded-[2rem] p-6 lg:-mx-6 lg:px-10 py-10" style={{ backgroundColor: colors.lightBeige }}>
-            <Reveal><h3 className="text-3xl font-serif text-center mb-12" style={{ color: colors.primaryPink }}>Fruity Summer Specials</h3></Reveal>
-            <div className="flex flex-col gap-10 h-full">
-               {baskinMenuData.fruitySummer.map((dish, i) => (
-                 <Reveal key={i} delay={(i % 3) * 50} className="flex flex-col text-center items-center">
-                    <h4 className="font-bold text-lg leading-snug mb-2" style={{ color: colors.darkBrown, fontFamily: 'var(--sans)' }}>{dish.name}</h4>
-                    <p className="text-[13px] leading-relaxed mb-3 max-w-[280px]" style={{ color: colors.nearBlack, opacity: 0.85, fontFamily: 'var(--sans)' }}>
-                      {dish.description}
-                    </p>
-                    <span className="font-bold text-base mb-6" style={{ color: colors.primaryPink, fontFamily: 'var(--sans)' }}>{dish.price}</span>
-                    {dish.image && (
-                      <div className="relative w-full aspect-[4/3] flex justify-center max-w-[250px]">
-                        <img src={dish.image} alt={dish.name} className="relative z-10 w-full h-full object-contain hover:scale-105 transition-transform duration-500" />
-                      </div>
-                    )}
-                 </Reveal>
-               ))}
-            </div>
-          </div>
-          
-        </div>
-      </section>
-
-      {/* SECTION 5: Make Your Own Sundae */}
-      <section className="container mx-auto px-6 py-20 pb-32">
-        <Reveal className="max-w-4xl mx-auto rounded-[3rem] overflow-hidden flex flex-col md:flex-row items-center border border-[#ebdaca]" style={{ backgroundColor: colors.white }}>
-           <div className="w-full md:w-5/12 aspect-square relative bg-[#f9f1e1] flex items-center justify-center p-8">
-             <div className="absolute inset-0 rounded-full scale-[0.8] bg-[#f0e3c9]"></div>
-             <img src="/images/baskin-robbins/media_1791278352100.png" alt="Make Your Own Sundae" className="relative z-10 w-full h-full object-contain" />
-           </div>
-           <div className="w-full md:w-7/12 p-10 md:p-16 flex flex-col items-center md:items-start text-center md:text-left">
-             <h2 className="text-4xl md:text-5xl font-serif mb-4" style={{ color: colors.primaryPink }}>Make Your Own Sundae</h2>
-             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-bold text-white mb-8" style={{ backgroundColor: colors.primaryPink }}>Starting at ₹99</span>
-             
-             <div className="flex flex-col gap-4 mb-8">
-               <div className="flex gap-4 items-center">
-                 <span className="font-bold w-16" style={{ color: colors.darkBrown }}>Step 1:</span>
-                 <span style={{ color: colors.nearBlack }}>Pick your scoop</span>
-               </div>
-               <div className="flex gap-4 items-center">
-                 <span className="font-bold w-16" style={{ color: colors.darkBrown }}>Step 2:</span>
-                 <span style={{ color: colors.nearBlack }}>Drizzle a sauce</span>
-               </div>
-               <div className="flex gap-4 items-center">
-                 <span className="font-bold w-16" style={{ color: colors.darkBrown }}>Step 3:</span>
-                 <span style={{ color: colors.nearBlack }}>Add a topping</span>
-               </div>
-             </div>
-             
-             <p className="font-bold text-lg" style={{ color: colors.primaryPink }}>Whipped cream & cherry on us!</p>
-           </div>
-        </Reveal>
-        
-        <div className="text-center mt-12">
-          <p className="text-[10px] uppercase tracking-widest opacity-40">Images are for representation purposes only.</p>
-        </div>
-      </section>
     </div>
   );
-};
+}

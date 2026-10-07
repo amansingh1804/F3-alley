@@ -6,6 +6,7 @@ import { Reveal } from "@/components/Reveal";
 import { brands, dishes, events, faqItems, facilities, gallery, offers, venueAddress, venueHours, generalVenueInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
 import { BaskinMenu } from "@/components/BaskinMenu/BaskinMenu";
+
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "The Alley", href: "/about" },
@@ -129,26 +130,14 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
                 </div>
               </div>
             )}
+            {type === "brand" && slug === "baskin-robbins" && (
+              <div style={{ marginTop: '3rem', marginBottom: '2rem' }}>
+                <BaskinMenu />
+              </div>
+            )}
             <Link href={type === "brand" ? "/brands" : "/events"} className="arrow-button"><span>Back to {type === "brand" ? "all brands" : "what's on"}</span><ArrowUpRight size={16} /></Link>
           </Reveal>
         </div>
-        {type === "brand" && item.slug === "baskin-robbins" && (
-          <BaskinMenu />
-        )}
-        {type === "brand" && item.slug !== "baskin-robbins" && (item as typeof brands[number]).menuItems && (
-          <div className="container" style={{ marginTop: '5rem', paddingBottom: '6rem' }}>
-            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl mb-14" style={{ fontFamily: 'var(--serif)' }}>Menu</h3></Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {((item as typeof brands[number]).menuItems || []).map((dish: any, index: number) => (
-                <div key={index} className="p-6 border border-[#ebdaca] rounded-2xl flex flex-col">
-                  <h4 className="font-bold text-lg mb-2">{dish.name}</h4>
-                  <p className="text-sm opacity-80 mb-4 flex-grow">{dish.note || dish.description}</p>
-                  <span className="font-bold text-[#e8196b]">{dish.price}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </section>
     </PageShell>
   );
