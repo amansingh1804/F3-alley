@@ -133,31 +133,52 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
           </Reveal>
         </div>
         {type === "brand" && (item as typeof brands[number]).menuItems && (
-          <div className="container" style={{ marginTop: '6rem' }}>
-            <Reveal><h3 style={{ fontSize: '3rem', marginBottom: '3rem', fontFamily: 'var(--font-display)', lineHeight: 1 }}>Menu</h3></Reveal>
-            <div className="food-page-grid">
-              {((item as typeof brands[number]).menuItems || []).map((dish, index) => (
-                <Reveal key={index} delay={(index % 4) * 50}>
-                  <article className="food-card directory-food-card">
-                    {dish.image ? (
-                      <div className="food-image">
-                        <img src={dish.image} alt={dish.name} loading="lazy" />
-                        <span className="food-price">{dish.price}</span>
+          <div className="container" style={{ marginTop: '6rem', paddingBottom: '4rem' }}>
+            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl" style={{ fontFamily: 'var(--serif)' }}>Menu</h3></Reveal>
+            <Reveal delay={100}><p className="mt-3.5 text-pretty text-center text-muted-foreground text-xl tracking-[-0.015em] sm:text-lg md:text-2xl" style={{ color: 'var(--ink-soft)' }}>Indulge in our finest selections</p></Reveal>
+            
+            <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {((item as typeof brands[number]).menuItems || []).map((dish, index) => {
+                const colorMap = [
+                  { border: "border-blue-200", bg: "bg-blue-50", text: "text-blue-500", imgBg: "bg-blue-100" },
+                  { border: "border-green-600/30", bg: "bg-green-50", text: "text-green-600", imgBg: "bg-green-100" },
+                  { border: "border-red-200", bg: "bg-red-50", text: "text-red-500", imgBg: "bg-red-100" },
+                  { border: "border-amber-600/30", bg: "bg-amber-50", text: "text-amber-600", imgBg: "bg-amber-100" },
+                  { border: "border-purple-200", bg: "bg-purple-50", text: "text-purple-500", imgBg: "bg-purple-100" },
+                ];
+                const c = colorMap[index % colorMap.length];
+                const isTall = index === 2 || index === 9 || index === 14;
+                const isWide = index === 6 || index === 11;
+                
+                let spanClasses = "";
+                if (isTall) spanClasses = "row-span-2";
+                if (isWide) spanClasses = "md:col-span-2";
+                
+                return (
+                  <Reveal key={index} delay={(index % 4) * 50} className={`${spanClasses} h-full`}>
+                    <div className={`rounded-xl border ${c.border} ${c.bg} p-6 py-7 flex flex-col h-full w-full overflow-hidden`}>
+                      {dish.image ? (
+                        <img src={dish.image} alt={dish.name} className={`mb-7 w-full object-cover rounded-xl shadow-sm ${isTall ? 'h-64' : 'h-40'}`} />
+                      ) : (
+                        <div className={`mb-7 w-full rounded-xl ${c.imgBg} flex flex-col items-center justify-center ${c.text} ${isTall ? 'h-64' : 'h-40'} font-medium tracking-wide`}>
+                           <span className="opacity-80">Image Pending</span>
+                        </div>
+                      )}
+                      
+                      <div className="flex flex-col flex-grow">
+                        <span className={`text-sm font-bold uppercase tracking-wider mb-2 ${c.text}`}>{dish.category}</span>
+                        <span className="font-medium text-3xl leading-tight mb-4" style={{ color: 'var(--ink)' }}>{dish.name}</span>
+                        <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--ink-soft)' }}>
+                          {dish.note}
+                        </p>
+                        <div className="mt-auto pt-2">
+                          <span className={`font-medium text-2xl ${c.text} bg-white px-5 py-2 rounded-full shadow-sm border ${c.border}`}>{dish.price}</span>
+                        </div>
                       </div>
-                    ) : (
-                      <div className="food-image" style={{ background: 'rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                         <span style={{ opacity: 0.3, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Image Pending</span>
-                         <span className="food-price">{dish.price}</span>
-                      </div>
-                    )}
-                    <div className="food-card-copy">
-                      <p>{(item as typeof brands[number]).name} · {dish.category}</p>
-                      <h3>{dish.name}</h3>
-                      <span>{dish.note}</span>
                     </div>
-                  </article>
-                </Reveal>
-              ))}
+                  </Reveal>
+                );
+              })}
             </div>
           </div>
         )}
