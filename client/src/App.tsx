@@ -132,6 +132,35 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
             <Link href={type === "brand" ? "/brands" : "/events"} className="arrow-button"><span>Back to {type === "brand" ? "all brands" : "what's on"}</span><ArrowUpRight size={16} /></Link>
           </Reveal>
         </div>
+        {type === "brand" && (item as typeof brands[number]).menuItems && (
+          <div className="container" style={{ marginTop: '6rem' }}>
+            <Reveal><h3 style={{ fontSize: '3rem', marginBottom: '3rem', fontFamily: 'var(--font-display)', lineHeight: 1 }}>Menu</h3></Reveal>
+            <div className="food-page-grid">
+              {((item as typeof brands[number]).menuItems || []).map((dish, index) => (
+                <Reveal key={index} delay={(index % 4) * 50}>
+                  <article className="food-card directory-food-card">
+                    {dish.image ? (
+                      <div className="food-image">
+                        <img src={dish.image} alt={dish.name} loading="lazy" />
+                        <span className="food-price">{dish.price}</span>
+                      </div>
+                    ) : (
+                      <div className="food-image" style={{ background: 'rgba(0,0,0,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                         <span style={{ opacity: 0.3, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Image Pending</span>
+                         <span className="food-price">{dish.price}</span>
+                      </div>
+                    )}
+                    <div className="food-card-copy">
+                      <p>{(item as typeof brands[number]).name} · {dish.category}</p>
+                      <h3>{dish.name}</h3>
+                      <span>{dish.note}</span>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </PageShell>
   );
