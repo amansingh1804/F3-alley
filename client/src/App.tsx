@@ -5,7 +5,7 @@ import Home from "@/pages/Home";
 import { Reveal } from "@/components/Reveal";
 import { brands, dishes, events, faqItems, facilities, gallery, offers, venueAddress, venueHours, generalVenueInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
-
+import { BaskinMenu } from "@/components/BaskinMenu/BaskinMenu";
 const footerLinks = [
   { label: "Home", href: "/" },
   { label: "The Alley", href: "/about" },
@@ -132,41 +132,18 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
             <Link href={type === "brand" ? "/brands" : "/events"} className="arrow-button"><span>Back to {type === "brand" ? "all brands" : "what's on"}</span><ArrowUpRight size={16} /></Link>
           </Reveal>
         </div>
-        {type === "brand" && (item as typeof brands[number]).menuItems && (
+        {type === "brand" && item.slug === "baskin-robbins" && (
+          <BaskinMenu />
+        )}
+        {type === "brand" && item.slug !== "baskin-robbins" && (item as typeof brands[number]).menuItems && (
           <div className="container" style={{ marginTop: '5rem', paddingBottom: '6rem' }}>
-            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl mb-14" style={{ fontFamily: 'var(--serif)', color: '#e8196b' }}>More Desserts. More Reasons to Indulge!</h3></Reveal>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-              {Object.entries(
-                ((item as typeof brands[number]).menuItems || []).reduce((acc, dish) => {
-                  if (!acc[dish.category]) acc[dish.category] = [];
-                  acc[dish.category].push(dish);
-                  return acc;
-                }, {} as any)
-              ).map(([category, items]: [string, any], catIdx) => (
-                <div key={catIdx} className={`flex flex-col ${catIdx === 2 ? 'bg-[#eee3d1] p-6 rounded-2xl -mx-6 md:mx-0' : ''}`}>
-                  <Reveal><h4 className="text-2xl font-bold mb-8 text-center" style={{ color: '#e8196b', fontFamily: 'var(--serif)' }}>{category}</h4></Reveal>
-                  <div className="flex flex-col gap-8">
-                    {items.map((dish: any, index: number) => (
-                      <Reveal key={index} delay={(index % 3) * 100}>
-                        <div className="flex flex-row items-center gap-5">
-                          <div className="relative w-28 h-28 shrink-0 flex items-center justify-center">
-                            <div className="absolute inset-0 bg-[#f6ebda] rounded-t-full scale-100 origin-bottom mt-3" style={{ zIndex: 0 }}></div>
-                            {dish.image ? (
-                              <img src={dish.image} alt={dish.name} className="relative z-10 w-full h-full object-contain scale-110 drop-shadow-lg" />
-                            ) : (
-                              <div className="relative z-10 w-full h-full bg-[#f6ebda] rounded-t-full flex items-center justify-center text-xs font-medium text-[#e8196b] text-center p-2">Image Pending</div>
-                            )}
-                          </div>
-                          <div className="flex flex-col flex-1">
-                            <h5 className="font-bold text-base leading-tight mb-1" style={{ color: '#321c15' }}>{dish.name}</h5>
-                            <p className="text-[11px] leading-snug mb-1 opacity-80" style={{ color: '#321c15' }}>{dish.note}</p>
-                            <span className="font-bold text-sm" style={{ color: '#e8196b' }}>{dish.price}</span>
-                          </div>
-                        </div>
-                      </Reveal>
-                    ))}
-                  </div>
+            <Reveal><h3 className="text-balance text-center font-medium text-4xl tracking-tight md:text-5xl mb-14" style={{ fontFamily: 'var(--serif)' }}>Menu</h3></Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {((item as typeof brands[number]).menuItems || []).map((dish: any, index: number) => (
+                <div key={index} className="p-6 border border-[#ebdaca] rounded-2xl flex flex-col">
+                  <h4 className="font-bold text-lg mb-2">{dish.name}</h4>
+                  <p className="text-sm opacity-80 mb-4 flex-grow">{dish.note || dish.description}</p>
+                  <span className="font-bold text-[#e8196b]">{dish.price}</span>
                 </div>
               ))}
             </div>
