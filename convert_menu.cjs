@@ -19,15 +19,25 @@ if (bodyStart !== -1) {
 const bodyEnd = html.indexOf('</body>');
 let bodyContent = html.substring(bodyStart, bodyEnd !== -1 ? bodyEnd : html.length);
 
+// Replace class with className
+bodyContent = bodyContent.replace(/class=/g, 'className=');
+
+// Fix unclosed tags (img, br, input, etc)
+bodyContent = bodyContent.replace(/<img([^>]*[^\/])>/g, '<img$1 />');
+bodyContent = bodyContent.replace(/<br>/g, '<br />');
+
 const tsxContent = "import React from 'react';\n" +
 "import './BaskinMenu.css';\n\n" +
 "export function BaskinMenu() {\n" +
 "  return (\n" +
-"    <div className=\"baskin-menu-wrapper\" dangerouslySetInnerHTML={{ __html: `" + bodyContent.replace(/`/g, '\\`').replace(/\$/g, '\\$') + "` }} />\n" +
+"    <div className=\"baskin-menu-wrapper\">\n" +
+"      " + bodyContent + "\n" +
+"    </div>\n" +
 "  );\n" +
 "}\n";
 
+fs.mkdirSync('C:\\\\aman\\\\f3-alley\\\\client\\\\src\\\\components\\\\BaskinMenu', { recursive: true });
 fs.writeFileSync('C:\\\\aman\\\\f3-alley\\\\client\\\\src\\\\components\\\\BaskinMenu\\\\BaskinMenu.tsx', tsxContent);
 fs.writeFileSync('C:\\\\aman\\\\f3-alley\\\\client\\\\src\\\\components\\\\BaskinMenu\\\\BaskinMenu.css', css);
 
-console.log('Successfully generated BaskinMenu component using dangerouslySetInnerHTML');
+console.log('Successfully generated BaskinMenu component');

@@ -5,7 +5,6 @@ import Home from "@/pages/Home";
 import { Reveal } from "@/components/Reveal";
 import { brands, dishes, events, faqItems, facilities, gallery, offers, venueAddress, venueHours, generalVenueInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
-import { BaskinMenu } from "@/components/BaskinMenu/BaskinMenu";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -130,11 +129,38 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
                 </div>
               </div>
             )}
-            {type === "brand" && slug === "baskin-robbins" && <BaskinMenu />}
             <Link href={type === "brand" ? "/brands" : "/events"} className="arrow-button"><span>Back to {type === "brand" ? "all brands" : "what's on"}</span><ArrowUpRight size={16} /></Link>
           </Reveal>
         </div>
       </section>
+      {type === "brand" && slug === "baskin-robbins" && (
+        <section className="section-padding" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <Reveal>
+              <div className="menu-card-header">
+                <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 400, margin: '0 0 8px' }}>
+                  Explore the <em>menu.</em>
+                </h2>
+                <p className="kicker">Scroll to browse all items</p>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="scrollable-menu-card">
+                <iframe
+                  src="/menus/baskin-robbins-menu.html"
+                  title="Baskin Robbins Menu"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
     </PageShell>
   );
 }
