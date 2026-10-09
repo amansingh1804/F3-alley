@@ -1,74 +1,414 @@
+.baskin-menu-container {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  color: #2a1a1f;
+  background: linear-gradient(135deg, #fff7fb 0%, #fff0f6 50%, #fde6f2 100%);
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-shadow: 0 20px 40px rgba(224, 25, 125, 0.08);
+  border: 1px solid rgba(224, 25, 125, 0.15);
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-:root{--pk:#e0197d;--ink:#2a1a1f;--mt:#4a3a3f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:#fff6ee;color:var(--ink);font-family:Poppins,system-ui,sans-serif}
-.page{max-width:744px;margin:0 auto;background:#fff6ee;overflow:hidden}
-h1,h2,h3,.pr{font-family:'Baloo 2',Poppins,sans-serif}
-.ph{display:block;width:100%;height:auto;-webkit-mask-image:radial-gradient(ellipse at center,#000 55%,transparent 98%);mask-image:radial-gradient(ellipse at center,#000 55%,transparent 98%)}
-.cut{-webkit-mask-image:none!important;mask-image:none!important;filter:drop-shadow(0 6px 8px #0002)}
-.kg{display:flex;align-items:flex-end;justify-content:center}.kg .k1{width:38%}.kg .k2{width:34%;margin:0 -6% 14% -4%;position:relative;z-index:1}.kg .k3{width:38%}
-.it .ph{aspect-ratio:1/1;object-fit:contain}
-.ph.hero{width:auto;max-width:100%;max-height:300px;margin:0 auto}
-.hdr{position:relative;display:flex;align-items:center;background:linear-gradient(120deg,#fde7d8,#fff2e6);min-height:240px;padding:22px 20px}
-.hdr .tx{flex:0 0 46%;z-index:1}
-.hdr .nw{position:absolute;top:0;left:0;background:var(--pk);color:#fff;font:800 14px 'Baloo 2';padding:4px 22px 4px 14px;border-radius:0 0 22px 0}
-.hdr .sc{font:italic 28px 'Baloo 2';color:var(--pk);margin:18px 0 -12px 26px}
-.hdr h1{font-size:44px;font-weight:800;color:var(--pk);line-height:.95;margin:0}
-.hdr p{font-size:12px;color:var(--mt);margin:10px 0 0;max-width:210px}
-.hdr .pic{flex:1}
-.sec{padding:18px 14px 22px;text-align:center}
-.sec>h2{font-size:30px;font-weight:800;color:var(--pk);margin:0}
-.sec>.sb{font-size:12.5px;color:var(--ink);margin:2px 0 14px}
-.row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0}
-.it{flex:0 0 33.33%;max-width:33.33%;padding:0 10px;text-align:left;display:flex;flex-direction:column;align-items:stretch}
-.it h3{font-size:14px;font-weight:700;line-height:1.15;margin:6px 0 3px;color:var(--ink)}
-.it p{font-size:11px;line-height:1.3;color:var(--mt);margin:0 0 4px;flex:1}
-.pr{color:var(--pk);font-weight:700;font-size:18px;line-height:1}
-.tg{display:inline-block;background:var(--pk);color:#fff;font:600 10px Poppins;padding:2px 9px;border-radius:99px;margin-left:8px;vertical-align:middle}
-.row.r2 .it{flex-basis:40%;max-width:40%}
-.c4 .it{flex-basis:25%;max-width:25%;padding:0 7px;border-left:1px solid #f0cfe0}
-.c4 .it:first-child{border-left:0}
-.c4 .it h3{font-size:12.5px}.c4 .it p{font-size:10px}.c4 .it .pr{font-size:16px}
-.c3 .it{border-left:1px solid #f0cfe0}.c3 .it:first-child{border-left:0}
-.pink{background:linear-gradient(180deg,#fde3ee,#fbd3e5);border-radius:28px;margin:6px 0}
-.kids{display:flex;align-items:center;text-align:left;gap:10px}
-.kids .l{flex:0 0 52%}
-.kids .r{flex:1}
-.kids h2{font-size:34px;font-weight:800;color:var(--pk);text-align:right;margin:0}
-.kids .sb{text-align:right;font-size:12px;margin:0 0 12px}
-.kids h3{color:var(--pk);font-size:14px;margin:8px 0 2px}
-.kids p{font-size:11px;margin:0 0 4px;line-height:1.3;color:var(--mt)}
-.kids .b{font:700 13px 'Baloo 2';color:var(--ink);margin:6px 0 0}
-.opts{display:flex;gap:26px;margin:4px 0}.opts span{font-size:10px;color:var(--pk);font-weight:600}.opts b{display:block;font:700 20px 'Baloo 2'}
-.diy{background:linear-gradient(90deg,#fde3ee,#fff0f5);padding:20px 14px;display:flex;gap:16px;align-items:center;text-align:left}
-.diy .l{flex:0 0 22%}
-.diy h2{font-size:28px;font-weight:800;color:var(--pk);margin:0}
-.diy .sb{font-size:12px;margin:2px 0 10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.diy .st{background:var(--pk);color:#fff;font:700 13px 'Baloo 2';padding:3px 14px;border-radius:99px}
-.steps{display:flex;gap:14px}
-.steps div{flex:1;display:flex;flex-direction:column;align-items:center;font-size:11px;text-align:center}
-.steps i{width:50px;height:50px;border-radius:50%;background:var(--pk);margin-bottom:5px;display:block}
-.steps b{color:var(--pk);font-size:12px}
-.rb{display:inline-block;background:var(--pk);color:#fff;font:italic 700 13px 'Baloo 2';padding:6px 18px;border-radius:99px;transform:rotate(-3deg);margin-top:12px}
+.baskin-header {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+}
 
-.it{transition:transform .3s ease,background .3s ease,box-shadow .3s ease;border-radius:18px;cursor:pointer;position:relative}
-.it .ph{transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .3s ease}
-.it h3{transition:color .25s ease}
-.it .pr{display:inline-block;transition:transform .25s ease}
-.it:hover{transform:translateY(-6px);background:#ffffffb8;box-shadow:0 14px 28px -10px #e0197d55}
-.it:hover .ph{transform:scale(1.1) rotate(-2deg)}
-.it:hover .ph.cut{filter:drop-shadow(0 12px 12px #0003)}
-.it:hover h3{color:var(--pk)}
-.it:hover .pr{transform:scale(1.12);transform-origin:left center}
-.it:hover .tg{animation:wig .5s ease}
-@keyframes wig{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
-.kg img{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-.kg img:hover{transform:translateY(-10px) scale(1.07) rotate(-2deg)}
-.hdr .pic .hero{transition:transform .6s ease}.hdr .pic:hover .hero{transform:scale(1.05)}
-.diy .l img{transition:transform .4s ease}.diy .l:hover img{transform:rotate(-6deg) scale(1.08)}
-.steps div{transition:transform .25s ease}.steps div:hover{transform:translateY(-4px)}.steps i{transition:transform .25s ease}.steps div:hover i{transform:scale(1.12) rotate(8deg)}
-.rb{transition:transform .25s ease}.rb:hover{transform:rotate(0) scale(1.06)}
-@media(hover:none){.it:hover{transform:none;box-shadow:none}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
-@media(max-width:560px){.it,.c4 .it,.row.r2 .it{flex-basis:50%;max-width:50%}.hdr h1{font-size:32px}.kids{flex-direction:column}.kids h2,.kids .sb{text-align:center}.diy{flex-direction:column}.steps{flex-wrap:wrap}}
+.baskin-header .brand-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #e0197d, #ff53a5);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(224, 25, 125, 0.25);
+}
+
+.baskin-header h1 {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: #e0197d;
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+}
+
+.baskin-header p {
+  color: #6b525e;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.baskin-order-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.swiggy-btn {
+  background: #fc8019;
+  color: #ffffff;
+}
+
+.swiggy-btn:hover {
+  background: #e57010;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(252, 128, 25, 0.35);
+}
+
+.zomato-btn {
+  background: #e23744;
+  color: #ffffff;
+}
+
+.zomato-btn:hover {
+  background: #cb202d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(226, 55, 68, 0.35);
+}
+
+/* Category Filter Navigation */
+.baskin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.baskin-nav-btn {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(224, 25, 125, 0.2);
+  color: #5a3c48;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+}
+
+.baskin-nav-btn:hover {
+  background: #ffffff;
+  border-color: #e0197d;
+  color: #e0197d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(224, 25, 125, 0.15);
+}
+
+.baskin-nav-btn.active {
+  background: #e0197d;
+  color: #ffffff;
+  border-color: #e0197d;
+  box-shadow: 0 6px 18px rgba(224, 25, 125, 0.3);
+}
+
+/* Menu Section */
+.baskin-section {
+  margin-bottom: 40px;
+}
+
+.baskin-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px stroke #fcd6e7;
+  padding-bottom: 8px;
+}
+
+.baskin-section-title h2 {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2a1a1f;
+  margin: 0;
+}
+
+.baskin-section-title .section-icon {
+  color: #e0197d;
+}
+
+/* Grid layout for cards */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Interactive Ticket Cards */
+.menu-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid rgba(224, 25, 125, 0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #e0197d, #ff66b2);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(224, 25, 125, 0.18);
+  border-color: rgba(224, 25, 125, 0.3);
+}
+
+.menu-card:hover::before {
+  opacity: 1;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.item-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #2a1a1f;
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.menu-card:hover .item-name {
+  color: #e0197d;
+}
+
+.item-tag {
+  background: rgba(224, 25, 125, 0.1);
+  color: #e0197d;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(224, 25, 125, 0.15);
+}
+
+.item-price {
+  font-family: 'Baloo 2', 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #e0197d;
+  margin: 0;
+}
+
+.item-badge-veg {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #27a844;
+  font-weight: 600;
+}
+
+.item-badge-veg::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #27a844;
+}
+
+/* Kids Section Styling */
+.kids-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fff4fa 100%);
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  grid-column: 1 / -1;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.kids-header-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kids-item-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #e0197d;
+}
+
+.kids-variants {
+  font-size: 13px;
+  color: #5a3c48;
+  margin-bottom: 12px;
+}
+
+.kids-flavours-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.flavour-pill {
+  background: #ffffff;
+  border: 1px solid #f8c2dc;
+  color: #9c2759;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.kids-prices {
+  display: flex;
+  gap: 20px;
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid #f8d3e5;
+  width: fit-content;
+}
+
+.price-option {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-option .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #886071;
+  font-weight: 600;
+}
+
+.price-option .val {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #e0197d;
+}
+
+/* DIY Section (Make Your Own Sundae) */
+.diy-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #e0197d 0%, #ff53a5 100%);
+  color: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 12px 32px rgba(224, 25, 125, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.diy-card::after {
+  content: '🍨';
+  font-size: 120px;
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.diy-info h3 {
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  color: #ffffff;
+}
+
+.diy-info p {
+  font-size: 14px;
+  margin: 0 0 16px 0;
+  opacity: 0.95;
+  max-width: 480px;
+}
+
+.diy-price-tag {
+  background: #ffffff;
+  color: #e0197d;
+  padding: 12px 24px;
+  border-radius: 99px;
+  font-family: 'Baloo 2', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease;
+}
+
+.diy-card:hover .diy-price-tag {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+@media (max-width: 640px) {
+  .baskin-menu-container {
+    padding: 20px 14px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .diy-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+}

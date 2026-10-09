@@ -5,6 +5,7 @@ import Home from "@/pages/Home";
 import { Reveal } from "@/components/Reveal";
 import { brands, dishes, events, faqItems, facilities, gallery, offers, venueAddress, venueHours, generalVenueInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
+import { BaskinMenu } from "@/components/BaskinMenu/BaskinMenu";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -145,18 +146,7 @@ function DetailPage({ type, slug }: { type: "brand" | "event"; slug?: string }) 
               </div>
             </Reveal>
             <Reveal delay={100}>
-              <div className="scrollable-menu-card">
-                <iframe
-                  src="/menus/baskin-robbins-menu.html"
-                  title="Baskin Robbins Menu"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    border: 'none',
-                    display: 'block',
-                  }}
-                />
-              </div>
+              <BaskinMenu />
             </Reveal>
           </div>
         </section>
