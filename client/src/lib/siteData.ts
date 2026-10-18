@@ -45,9 +45,9 @@ export type EventItem = {
 
 export const navItems = [
   { label: "The Alley", href: "/about" },
+  { label: "Amenities", href: "/#amenities" },
   { label: "Brands", href: "/brands" },
   { label: "What's on", href: "/events" },
-  { label: "Food map", href: "/food" },
 ];
 
 const brandImages = [
@@ -180,7 +180,109 @@ export const gallery = [
   { src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85", alt: "Crowd at a live event", tag: "The nights", tall: false },
 ];
 
-export const facilities = ["Multiple food brands", "Movie Screenings", "Arcade / Gaming", "Takeaway from participating outlets", "Food, people & experience"];
+export type Amenity = {
+  id: string;
+  number: string;
+  title: string;
+  tag: string;
+  purpose: string;
+  activities: string;
+  targetAudience: string;
+  detailsToConfirm: string[];
+  image: string;
+  phone?: string;
+  timings?: string;
+  location?: string;
+};
+
+export const amenities: Amenity[] = [
+  {
+    id: "kids-play-area",
+    number: "01",
+    title: "Kids’ Play Area",
+    tag: "Family & Play",
+    purpose: "Recreational space for children and families.",
+    activities: "Play and family recreation.",
+    targetAudience: "Children and families visiting F3 Alley.",
+    detailsToConfirm: [
+      "Play equipment",
+      "Age restrictions",
+      "Safety arrangements",
+      "Timings and charges"
+    ],
+    image: "/images/amenities/kids-play-area.jpg"
+  },
+  {
+    id: "amphitheatre",
+    number: "02",
+    title: "Amphitheatre",
+    tag: "Open-Air Culture",
+    purpose: "Open-air space for entertainment and gatherings.",
+    activities: "Live performances, music events, cultural programmes and community gatherings.",
+    targetAudience: "Visitors, families and event attendees.",
+    detailsToConfirm: [
+      "Seating capacity",
+      "Stage facilities",
+      "Sound system",
+      "Event schedule and private booking availability"
+    ],
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "pool-table",
+    number: "03",
+    title: "Pool Table",
+    tag: "Indoor Gaming",
+    purpose: "Indoor recreational gaming for friends and groups.",
+    activities: "Pool or billiards.",
+    targetAudience: "Visitors looking for casual indoor entertainment.",
+    detailsToConfirm: [
+      "Whether a pool table is available",
+      "Number of tables",
+      "Playing charges",
+      "Operating hours and access restrictions"
+    ],
+    image: "/images/amenities/pool-table.jpg"
+  },
+  {
+    id: "party-space",
+    number: "04",
+    title: "Open Space for Parties",
+    tag: "Private Gatherings",
+    purpose: "Potential venue for private celebrations and social gatherings.",
+    activities: "Birthday parties, small celebrations, group gatherings and private events.",
+    targetAudience: "Families, friends and groups.",
+    detailsToConfirm: [
+      "Availability of a dedicated open space",
+      "Maximum guest capacity",
+      "Rental charges & catering options",
+      "Decorations, music permissions and booking procedure"
+    ],
+    image: "/images/amenities/open-party-space.jpg"
+  },
+  {
+    id: "verdant-convention-hall",
+    number: "05",
+    title: "Verdant Convention Hall",
+    tag: "Convention & Grand Events",
+    purpose: "Event venue in Neeladri Nagar, Electronic City for weddings, receptions, and corporate gatherings.",
+    activities: "Weddings, receptions, birthday parties, and corporate events.",
+    targetAudience: "Families, event hosts, corporate groups, and wedding parties.",
+    phone: "+91 99167 53756",
+    timings: "Opens 11:00 AM",
+    location: "Electronic City Phase I, Bengaluru",
+    detailsToConfirm: [
+      "Hall capacity and seating arrangements",
+      "Wedding and reception facilities",
+      "Birthday and corporate event packages",
+      "Rental prices and catering options",
+      "Parking availability, lighting & audio"
+    ],
+    image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80"
+  }
+];
+
+export const facilities = ["Kids’ Play Area", "Amphitheatre", "Pool Table", "Open Space for Parties", "Verdant Convention Hall", "Multiple Food Brands"];
 
 export const faqItems = [
   { question: "Where is F3 Alley?", answer: "F3 Alley is located at 1st cross road, Neeladri Road, Electronic city phase 1, Bengaluru, Karnataka, 560100. Nearest Metro: VM47+GF5. Nearest Bus Stop: Neeladri Nagar Bus Stop and Wipro Gate Bus Stop." },

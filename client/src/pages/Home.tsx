@@ -1,11 +1,9 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronRight, Clock3, MapPin, MoveUpRight, Play, Sparkles, Utensils, X } from "lucide-react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronRight, Clock3, Info, MapPin, MoveUpRight, Phone, Play, Sparkles, Utensils, X } from "lucide-react";
 import { Link } from "wouter";
 import { Reveal } from "@/components/Reveal";
 import { CarouselRail } from "@/components/CarouselRail";
-import { brands, dishes, events, facilities, gallery, offers, venueAddress, venueAddressShort, venueHours } from "@/lib/siteData";
-
-const categories = ["All", ...Array.from(new Set(dishes.map(dish => dish.category)))];
+import { brands, events, facilities, gallery, offers, venueAddress, venueAddressShort, venueHours, amenities } from "@/lib/siteData";
 
 function SectionMarker({ number, label, light = false }: { number: string; label: string; light?: boolean }) {
   return (
@@ -25,10 +23,9 @@ function ArrowButton({ children, href = "#", dark = false }: { children: React.R
 }
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [heroProgress, setHeroProgress] = useState(0);
-  const filteredDishes = useMemo(() => activeCategory === "All" ? dishes : dishes.filter((dish) => dish.category === activeCategory), [activeCategory]);
+  const [contactSent, setContactSent] = useState(false);
 
   useEffect(() => {
     let frame = 0;
@@ -125,6 +122,79 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="amenities-section section-padding" id="amenities">
+        <div className="container">
+          <div className="section-head">
+            <Reveal><SectionMarker number="02" label="Amenity Details" /></Reveal>
+            <Reveal delay={100} mask><h2>Spaces to play.<br /><em>Room to gather.</em></h2></Reveal>
+            <Reveal delay={160}><p>F3 Alley, Neeladri Nagar, Electronic City<br />Recreational spaces &amp; community amenities.</p></Reveal>
+          </div>
+          <div className="bento-grid">
+            {amenities.map((amenity, index) => (
+              <Reveal key={amenity.id} delay={index * 100} className={`bento-item bento-item-${index + 1}`}>
+                <article className="bento-card">
+                  <img src={amenity.image} alt={amenity.title} loading="lazy" className="bento-bg" />
+                  <div className="bento-overlay" />
+                  
+                  <div className="bento-card-header">
+                    <span className="bento-tag">{amenity.tag}</span>
+                    <span className="bento-number">{amenity.number}</span>
+                  </div>
+
+                  <div className="bento-card-body">
+                    <div className="bento-content">
+                      <h3>{amenity.title}</h3>
+                      <p className="bento-purpose">{amenity.purpose}</p>
+                    </div>
+                    <div className="bento-detail-panel">
+                      <div className="bento-detail-row">
+                        <span className="bento-detail-label">Activities</span>
+                        <p>{amenity.activities}</p>
+                      </div>
+                      <div className="bento-detail-row">
+                        <span className="bento-detail-label">Audience</span>
+                        <p>{amenity.targetAudience}</p>
+                      </div>
+                      {(amenity.phone || amenity.timings) && (
+                        <div className="bento-contact-row">
+                          {amenity.phone && (
+                            <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-phone-badge">
+                              <Phone size={11} /> {amenity.phone}
+                            </a>
+                          )}
+                          {amenity.timings && (
+                            <span className="bento-time-badge">
+                              <Clock3 size={11} /> {amenity.timings}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      <div className="bento-confirm-strip">
+                        <Info size={12} />
+                        <span>To confirm:</span>
+                        {amenity.detailsToConfirm.map((d) => (
+                          <span key={d} className="bento-confirm-chip">{d}</span>
+                        ))}
+                      </div>
+                      <div className="bento-actions">
+                        <Link href="/contact" className="bento-inquire">
+                          Inquire <ArrowUpRight size={13} />
+                        </Link>
+                        {amenity.phone && (
+                          <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-call-direct">
+                            <Phone size={12} /> Call direct
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <div className="marquee-band marquee-band-logos" aria-label="Our Brands">
         <div className="marquee-track" style={{ animationDuration: "40s" }}>
           <div className="marquee-group">
@@ -149,14 +219,14 @@ export default function Home() {
       <section className="brands-section section-padding dark-section" id="brands-preview">
         <div className="container">
           <div className="section-head light-head">
-            <Reveal><SectionMarker number="02" label="Find your table" light /></Reveal>
+            <Reveal><SectionMarker number="03" label="Find your table" light /></Reveal>
             <Reveal delay={100} mask><h2>Meet the<br /><em>line-up.</em></h2></Reveal>
             <Reveal delay={160}><p>Different cravings.<br />One good place.</p></Reveal>
           </div>
           <CarouselRail label="Featured brands" dark className="brand-carousel">
             {brands.map((brand, index) => (
               <Reveal key={brand.slug} delay={index * 80} className={`brand-card-wrap brand-card-${index + 1} brand-carousel-item`}>
-                <Link href={`/brands/${brand.slug}`} className="brand-card">
+                <Link href="/brands" className="brand-card">
                   <div className="brand-card-image">
                     <img src={brand.image} alt={`${brand.name} food`} loading="eager" className="brand-bg-image" />
                     {brand.logo && <img src={brand.logo} alt="" className={`brand-card-hover-logo ${brand.logo.endsWith('.jpg') ? 'logo-jpg' : ''}`} />}
@@ -175,34 +245,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="food-section section-padding" id="food">
-        <div className="container">
-          <div className="section-head food-head">
-            <Reveal><SectionMarker number="03" label="A little of everything" /></Reveal>
-            <Reveal delay={100} mask><h2>What are you<br /><em>in the mood for?</em></h2></Reveal>
-            <Reveal delay={160}><p>Build your own<br />perfect wander.</p></Reveal>
-          </div>
-          <div className="filter-row" role="tablist" aria-label="Food categories">
-            {categories.map((category) => <button key={category} className={activeCategory === category ? "filter-chip active" : "filter-chip"} onClick={() => setActiveCategory(category)} role="tab" aria-selected={activeCategory === category}>{category}</button>)}
-          </div>
-          <CarouselRail label="Food map" className="food-carousel">
-            {filteredDishes.map((dish, index) => (
-              <Reveal key={dish.name} delay={index * 60} className="food-card-wrap food-carousel-item">
-                <article className="food-card">
-                  <button className="food-image" onClick={() => setSelectedImage(dish.image)} aria-label={`View ${dish.name}`}>
-                    <img src={dish.image} alt={dish.name} loading="eager" />
-                    <span className="food-price">{dish.price}</span>
-                    <span className="view-dish">View <MoveUpRight size={13} /></span>
-                  </button>
-                  <div className="food-card-copy"><p>{dish.brand} · {dish.category}</p><h3>{dish.name}</h3><span>{dish.note}</span></div>
-                </article>
-              </Reveal>
-            ))}
-          </CarouselRail>
-          <Reveal className="right-cta"><ArrowButton href="/food">Open the food map</ArrowButton></Reveal>
-        </div>
-      </section>
-
       <section className="experience-section section-padding dark-section">
         <div className="container experience-grid">
           <Reveal mask className="experience-poster">
@@ -214,11 +256,10 @@ export default function Home() {
             <h2>Come for the<br /><em>food.</em><br />Stay for the <em>feeling.</em></h2>
             <p className="body-light">There is always another reason to stay: live music, pop-ups, big screen moments, tiny celebrations, and the table next to yours becoming your new favourite people.</p>
             <div className="facilities-list">{facilities.slice(0, 4).map((item, index) => <span key={item}><b>0{index + 1}</b>{item}</span>)}</div>
-            <ArrowButton href="/facilities" dark>See what is on</ArrowButton>
+            <ArrowButton href="/events" dark>See what is on</ArrowButton>
           </Reveal>
         </div>
       </section>
-
       <section className="offers-section section-padding" id="offers">
         <div className="container">
           <div className="section-head offers-head">
@@ -227,7 +268,7 @@ export default function Home() {
             <Reveal delay={160}><p>Small reasons<br />to come back.</p></Reveal>
           </div>
           <div className="offer-grid">
-            {offers.length ? offers.map((offer, index) => <Reveal key={offer.title} delay={index * 90} className="offer-card-wrap"><Link href="/offers" className={`offer-card offer-${offer.color}`}><span className="offer-label">{offer.label}</span><h3>{offer.title}</h3><p>{offer.note}</p><span className="offer-arrow"><ArrowUpRight size={18} /></span></Link></Reveal>) : <Reveal className="home-empty-card"><span>✳</span><div><h3>Offers coming soon.</h3><p>Keep an eye out for special promotions and happy hours from our line-up!</p></div><ArrowButton href="/offers">View offers page</ArrowButton></Reveal>}
+            {offers.length ? offers.map((offer, index) => <Reveal key={offer.title} delay={index * 90} className="offer-card-wrap"><div className={`offer-card offer-${offer.color}`}><span className="offer-label">{offer.label}</span><h3>{offer.title}</h3><p>{offer.note}</p><span className="offer-arrow"><ArrowUpRight size={18} /></span></div></Reveal>) : <Reveal className="home-empty-card"><span>✳</span><div><h3>Offers coming soon.</h3><p>Keep an eye out for special promotions and happy hours from our line-up!</p></div><ArrowButton href="/brands">Explore brands</ArrowButton></Reveal>}
           </div>
         </div>
       </section>
@@ -240,7 +281,7 @@ export default function Home() {
             <Reveal delay={160}><p>There is always<br />something next.</p></Reveal>
           </div>
           <div className="event-list">
-            {events.length ? events.map((event, index) => <Reveal key={event.title} delay={index * 100}><Link href={`/events/${event.title.toLowerCase().replaceAll(" ", "-")}`} className="event-row ticket-card"><div className="event-date"><span>{event.date}</span><b>{event.time}</b></div><div className="event-info"><span className="event-tag">{event.tag}</span><h3>{event.title}</h3><p>{event.location}</p></div><span className="event-arrow"><ArrowUpRight size={19} /></span></Link></Reveal>) : <Reveal className="home-event-empty"><span>✳</span><div><h3>Events coming soon.</h3><p>Get ready for sports screenings, movie nights, arcade gaming, and much more fun activities!</p></div></Reveal>}
+            {events.length ? events.map((event, index) => <Reveal key={event.title} delay={index * 100}><div className="event-row ticket-card"><div className="event-date"><span>{event.date}</span><b>{event.time}</b></div><div className="event-info"><span className="event-tag">{event.tag}</span><h3>{event.title}</h3><p>{event.location}</p></div><span className="event-arrow"><ArrowUpRight size={19} /></span></div></Reveal>) : <Reveal className="home-event-empty"><span>✳</span><div><h3>Events coming soon.</h3><p>Get ready for sports screenings, movie nights, arcade gaming, and much more fun activities!</p></div></Reveal>}
           </div>
           <Reveal className="center-cta"><ArrowButton href="/events" dark>See all events</ArrowButton></Reveal>
         </div>
@@ -259,7 +300,51 @@ export default function Home() {
         <div className="container visit-content"><Reveal mask><SectionMarker number="08" label="Your next stop" light /></Reveal><Reveal delay={100} mask><h2>Find<br /><em>F3 Alley.</em></h2></Reveal><Reveal delay={180}><div className="visit-details"><p><MapPin size={18} /> {venueAddress}</p><p><Clock3 size={18} /> {venueHours}</p></div><ArrowButton href="/contact" dark>Plan your visit</ArrowButton></Reveal></div>
       </section>
 
-      <section className="newsletter-section section-padding"><div className="container newsletter-grid"><Reveal><SectionMarker number="09" label="Keep in touch" /></Reveal><Reveal delay={100} mask><h2>Good plans<br /><em>start here.</em></h2></Reveal><Reveal delay={180} className="newsletter-form-wrap"><p>New openings, late-night reasons, and the occasional very good idea.</p><form className="newsletter-form" onSubmit={(event) => event.preventDefault()}><input type="email" placeholder="Your email address" aria-label="Your email address" /><button type="submit" aria-label="Subscribe"><ArrowUpRight size={18} /></button></form><small>By signing up, you agree to hear from F3 Alley. No noise, just the good stuff.</small></Reveal></div></section>
+      <section className="newsletter-section section-padding" id="contact">
+        <div className="container newsletter-grid">
+          <Reveal>
+            <SectionMarker number="09" label="Keep in touch" />
+          </Reveal>
+          <Reveal delay={100} mask>
+            <h2>Good plans<br /><em>start here.</em></h2>
+          </Reveal>
+          <Reveal delay={180} className="newsletter-form-wrap">
+            <p className="newsletter-intro">New openings, late-night reasons, and the occasional very good idea.</p>
+            <form className="contact-form home-contact-form" onSubmit={(event) => { event.preventDefault(); setContactSent(true); }}>
+              <label>
+                Name
+                <input required placeholder="Your name" />
+              </label>
+              <label>
+                Email
+                <input type="email" required placeholder="you@example.com" />
+              </label>
+              <label>
+                What can we help with?
+                <select defaultValue="general">
+                  <option value="general">A general hello</option>
+                  <option value="event">Plan a private event</option>
+                  <option value="amenity">Book an amenity / space</option>
+                  <option value="brand">Partner with F3 Alley</option>
+                </select>
+              </label>
+              <label>
+                Message
+                <textarea required placeholder="Tell us the good stuff..." rows={4} />
+              </label>
+              <button type="submit" className="form-submit">
+                <span>{contactSent ? "Message noted ✓" : "Send it over"}</span>
+                <ArrowUpRight size={18} />
+              </button>
+              {contactSent && (
+                <p className="form-success">
+                  Thanks for reaching out! We've received your note and will get back to you shortly.
+                </p>
+              )}
+            </form>
+          </Reveal>
+        </div>
+      </section>
 
       {selectedImage && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" onClick={() => setSelectedImage(null)}><button className="lightbox-close" onClick={() => setSelectedImage(null)} aria-label="Close image preview"><X size={22} /></button><img src={selectedImage} alt="Expanded gallery preview" onClick={(event) => event.stopPropagation()} /></div>}
     </main>

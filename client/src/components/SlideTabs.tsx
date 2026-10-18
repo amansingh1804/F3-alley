@@ -4,10 +4,11 @@ import { Link, useLocation } from "wouter";
 
 const TABS = [
   { name: "Home", href: "/" },
+  { name: "Amenities", href: "/#amenities" },
   { name: "The Alley", href: "/about" },
   { name: "Brands", href: "/brands" },
   { name: "What's on", href: "/events" },
-  { name: "Food map", href: "/food" },
+  { name: "Gallery", href: "/gallery" },
 ];
 
 export const SlideTabs = () => {
@@ -18,7 +19,7 @@ export const SlideTabs = () => {
   // Find which tab is active based on location
   const getActiveIndex = () => {
     // Exact match or sub-route match for events/brands
-    const index = TABS.findIndex(t => location === t.href || (t.href !== "/" && location.startsWith(t.href)));
+    const index = TABS.findIndex(t => location === t.href || (t.href !== "/" && !t.href.includes("#") && location.startsWith(t.href)));
     return index === -1 ? 0 : index;
   };
 
@@ -74,10 +75,24 @@ export const SlideTabs = () => {
 
 const Tab = React.forwardRef<HTMLLIElement, { children: React.ReactNode, setPosition: any, onClick: () => void, href: string }>(
   ({ children, setPosition, onClick, href }, ref) => {
+    const isAnchor = href.includes("#");
+    const handleClick = (e: React.MouseEvent) => {
+      onClick();
+      if (isAnchor) {
+        const id = href.split("#")[1];
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", href);
+        }
+      }
+    };
+
     return (
       <li
         ref={ref}
-        onClick={onClick}
+        onClick={handleClick}
         onMouseEnter={() => {
           if (!ref || !('current' in ref) || !ref.current) return;
           const { width } = ref.current.getBoundingClientRect();
@@ -85,7 +100,11 @@ const Tab = React.forwardRef<HTMLLIElement, { children: React.ReactNode, setPosi
         }}
         className="relative z-10 block cursor-pointer px-4 py-2"
       >
-        <Link href={href} className="block w-full h-full text-current font-bold uppercase tracking-[.08em] text-[11px] opacity-80 hover:opacity-100 transition-opacity">
+        <Link 
+          href={href} 
+          onClick={handleClick}
+          className="block w-full h-full text-current font-bold uppercase tracking-[.08em] text-[11px] opacity-80 hover:opacity-100 transition-opacity"
+        >
           {children}
         </Link>
       </li>
