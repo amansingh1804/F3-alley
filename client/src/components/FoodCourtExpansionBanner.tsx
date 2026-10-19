@@ -166,13 +166,13 @@ export function FoodCourtExpansionBanner({
           >
             <defs>
               <radialGradient id="nodeGlow1" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#ff4626" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#ff4626" stopOpacity="0" />
+                <stop offset="0%" stopColor="#e75f43" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#e75f43" stopOpacity="0" />
               </radialGradient>
               <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#ff4626" stopOpacity="0.85" />
-                <stop offset="60%" stopColor="#ff7755" stopOpacity="0.5" />
-                <stop offset="100%" stopColor="#ffaa88" stopOpacity="0.25" />
+                <stop offset="0%" stopColor="#e75f43" stopOpacity="0.85" />
+                <stop offset="60%" stopColor="#ef8a74" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#f7bfb4" stopOpacity="0.25" />
               </linearGradient>
             </defs>
 
@@ -192,9 +192,9 @@ export function FoodCourtExpansionBanner({
               y1="30" 
               x2="330" 
               y2="190" 
-              stroke="#ff5533" 
+              stroke="#e75f43" 
               strokeWidth="1.2" 
-              strokeOpacity="0.75" 
+              strokeOpacity="0.65" 
             />
 
             {/* Bottom horizontal axis line */}
@@ -203,9 +203,9 @@ export function FoodCourtExpansionBanner({
               y1="465" 
               x2="520" 
               y2="465" 
-              stroke="#ff5533" 
+              stroke="#e75f43" 
               strokeWidth="1.2" 
-              strokeOpacity="0.65" 
+              strokeOpacity="0.55" 
             />
 
             {/* Fluid sweeping right loop curve */}
