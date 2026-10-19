@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronRight, Clock3, Info,
 import { Link } from "wouter";
 import { Reveal } from "@/components/Reveal";
 import { CarouselRail } from "@/components/CarouselRail";
+import { FoodCourtExpansionBanner } from "@/components/FoodCourtExpansionBanner";
 import { brands, events, facilities, gallery, offers, venueAddress, venueAddressShort, venueHours, amenities, foodCourtInfo } from "@/lib/siteData";
 
 function SectionMarker({ number, label, light = false }: { number: string; label: string; light?: boolean }) {
@@ -80,42 +81,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="promo-editorial-section" aria-label="Food Court Expansion Announcement">
-        <div className="container">
-          <div className="promo-editorial-grid">
-            <Reveal mask>
-              <div className="promo-editorial-side">
-                <SectionMarker number="00" label="More to explore" />
-                <div className="promo-editorial-facts">
-                  <div><b>20</b><span>OUTLETS PLANNED</span></div>
-                  <div><b>14–15</b><span>CURRENT OUTLETS</span></div>
-                  <p>{venueAddressShort}</p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={100} mask>
-              <div className="promo-editorial-copy">
-                <p className="kicker">Expansion underway</p>
-                <h2>F3 Alley is growing.<br /><em>More flavours. More choices.</em></h2>
-                <p className="body-large">
-                  Discover a growing collection of food outlets at F3 Alley, with expansion planned to accommodate up to 20 outlets — bringing even more diverse flavours, street food favourites, and culinary concepts together under one roof.
-                </p>
-                <ArrowButton href="/brands">Explore the food court</ArrowButton>
-              </div>
-            </Reveal>
-            <Reveal delay={180} className="promo-editorial-image-wrap">
-              <div className="image-frame promo-editorial-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85" 
-                  alt="F3 Alley Food Court Expansion" 
-                  loading="lazy" 
-                />
-                <span className="image-caption">20 outlets planned</span>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <FoodCourtExpansionBanner ctaHref="/brands" />
 
       <section className="intro-section section-padding" id="discover">
         <div className="container">

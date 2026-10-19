@@ -5,6 +5,7 @@ import Home from "@/pages/Home";
 import { Reveal } from "@/components/Reveal";
 import { brands, events, gallery, venueAddress, venueHours, generalVenueInfo, foodCourtInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
+import { FoodCourtExpansionBanner } from "@/components/FoodCourtExpansionBanner";
 
 const footerLinks = [
   { label: "Home", href: "/" },
@@ -146,53 +147,14 @@ function AboutPage() {
 function BrandsPage() {
   return (
     <PageShell title={<>The<br /><em>line-up.</em></>} eyebrow="Find your table">
-      <section className="brands-promo-editorial-section" aria-label="Brand expansion announcement">
-        <div className="container">
-          <div className="brands-editorial-grid">
-            <Reveal mask>
-              <div className="brands-editorial-side">
-                <SectionMarker number="01" label="Expansion Spotlight" light />
-                <div className="brands-editorial-facts">
-                  <div><b>20</b><span>OUTLETS PLANNED</span></div>
-                  <div><b>14–15</b><span>CURRENT OUTLETS</span></div>
-                  <p>Neeladri Road · Electronic City Phase I · Bengaluru</p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={100} mask>
-              <div className="brands-editorial-copy">
-                <p className="kicker">The Food Directory</p>
-                <h2>More brands.<br /><em>More to explore.</em></h2>
-                <p className="body-large">
-                  F3 Alley is growing! Discover a diverse collection of food outlets, with expansion planned to bring even more brands and food experiences together under one destination.
-                </p>
-                <a 
-                  href="#brand-directory" 
-                  className="arrow-button brands-arrow-btn"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById("brand-directory");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <span>Explore our brands</span>
-                  <ArrowUpRight size={16} strokeWidth={1.8} />
-                </a>
-              </div>
-            </Reveal>
-            <Reveal delay={180} className="brands-editorial-image-wrap">
-              <div className="image-frame brands-editorial-image">
-                <img 
-                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85" 
-                  alt="F3 Alley Brands & Food Outlets" 
-                  loading="lazy" 
-                />
-                <span className="image-caption">20 outlets planned</span>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <FoodCourtExpansionBanner 
+        isDarkTheme 
+        ctaHref="#brand-directory" 
+        onCtaClick={() => {
+          const el = document.getElementById("brand-directory");
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }}
+      />
 
       <section className="directory-section section-padding" id="brand-directory">
         <div className="container directory-intro">
