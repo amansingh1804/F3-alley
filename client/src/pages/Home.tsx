@@ -3,7 +3,7 @@ import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronRight, Clock3, Info,
 import { Link } from "wouter";
 import { Reveal } from "@/components/Reveal";
 import { CarouselRail } from "@/components/CarouselRail";
-import { brands, events, facilities, gallery, offers, venueAddress, venueAddressShort, venueHours, amenities } from "@/lib/siteData";
+import { brands, events, facilities, gallery, offers, venueAddress, venueAddressShort, venueHours, amenities, foodCourtInfo } from "@/lib/siteData";
 
 function SectionMarker({ number, label, light = false }: { number: string; label: string; light?: boolean }) {
   return (
@@ -80,6 +80,43 @@ export default function Home() {
         </div>
       </div>
 
+      <section className="promo-editorial-section" aria-label="Food Court Expansion Announcement">
+        <div className="container">
+          <div className="promo-editorial-grid">
+            <Reveal mask>
+              <div className="promo-editorial-side">
+                <SectionMarker number="00" label="More to explore" />
+                <div className="promo-editorial-facts">
+                  <div><b>20</b><span>OUTLETS PLANNED</span></div>
+                  <div><b>14–15</b><span>CURRENT OUTLETS</span></div>
+                  <p>{venueAddressShort}</p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={100} mask>
+              <div className="promo-editorial-copy">
+                <p className="kicker">Expansion underway</p>
+                <h2>F3 Alley is growing.<br /><em>More flavours. More choices.</em></h2>
+                <p className="body-large">
+                  Discover a growing collection of food outlets at F3 Alley, with expansion planned to accommodate up to 20 outlets — bringing even more diverse flavours, street food favourites, and culinary concepts together under one roof.
+                </p>
+                <ArrowButton href="/brands">Explore the food court</ArrowButton>
+              </div>
+            </Reveal>
+            <Reveal delay={180} className="promo-editorial-image-wrap">
+              <div className="image-frame promo-editorial-image">
+                <img 
+                  src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=85" 
+                  alt="F3 Alley Food Court Expansion" 
+                  loading="lazy" 
+                />
+                <span className="image-caption">20 outlets planned</span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <section className="intro-section section-padding" id="discover">
         <div className="container">
           <div className="intro-grid">
@@ -87,8 +124,8 @@ export default function Home() {
             <Reveal delay={100} mask>
               <div className="intro-copy">
                 <p className="kicker">Not just a meal.</p>
-                <h2>Make a day<br /><em>of it.</em></h2>
-                <p className="body-large">F3 Alley is a new kind of gathering place — a rotating line-up of food, drinks, sounds, and people worth sticking around for.</p>
+                <h2>More than a destination.<br /><em>A community.</em></h2>
+                <p className="body-large">F3 Alley brings people together around long tables, arcade lights, and shared plates — a neighbourhood gathering place where friends, families, and Bangalore's food lovers make a day of it.</p>
                 <ArrowButton href="/about">Find your way in</ArrowButton>
               </div>
             </Reveal>
@@ -115,9 +152,10 @@ export default function Home() {
             <Reveal delay={160}><p>Drop by for fifteen minutes, make a slow afternoon of it, or let the evening take the scenic route.</p></Reveal>
           </div>
           <div className="day-flow">
-            <Reveal delay={80}><article><span>05:30</span><h3>The quick one</h3><p>One plate, one drink, back to the day with something better to talk about.</p></article></Reveal>
-            <Reveal delay={150}><article><span>07:00</span><h3>The long table</h3><p>Bring the group, order for the middle, and let everyone find their favourite corner.</p></article></Reveal>
-            <Reveal delay={220}><article><span>09:30</span><h3>The late turn</h3><p>Music up, lights low, something sweet on the way out. Stay until the story ends.</p></article></Reveal>
+            <Reveal delay={60}><article><span>12:00</span><h3>Work, connect &amp; unwind</h3><p>Trade your desk for a fresh table, good coffee, and room to think between bites.</p></article></Reveal>
+            <Reveal delay={120}><article><span>05:30</span><h3>The quick one</h3><p>One plate, one drink, back to the day with something better to talk about.</p></article></Reveal>
+            <Reveal delay={180}><article><span>07:00</span><h3>The long table</h3><p>Bring the group, order for the middle, and let everyone find their favourite corner.</p></article></Reveal>
+            <Reveal delay={240}><article><span>09:30</span><h3>The late turn</h3><p>Music up, lights low, something sweet on the way out. Stay until the story ends.</p></article></Reveal>
           </div>
         </div>
       </section>
@@ -146,6 +184,21 @@ export default function Home() {
                       <h3>{amenity.title}</h3>
                       <p className="bento-purpose">{amenity.purpose}</p>
                     </div>
+
+                    {amenity.subcategories && (
+                      <div className="bento-subcategories">
+                        {amenity.subcategories.map((sub, i) => (
+                          <div key={sub.title} className="bento-sub-pill">
+                            <span className="bento-sub-num">0{i + 1}</span>
+                            <div className="bento-sub-text">
+                              <h4>{sub.title}</h4>
+                              <p>{sub.description}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
                     <div className="bento-detail-panel">
                       <div className="bento-detail-row">
                         <span className="bento-detail-label">Activities</span>
@@ -219,9 +272,16 @@ export default function Home() {
       <section className="brands-section section-padding dark-section" id="brands-preview">
         <div className="container">
           <div className="section-head light-head">
-            <Reveal><SectionMarker number="03" label="Find your table" light /></Reveal>
-            <Reveal delay={100} mask><h2>Meet the<br /><em>line-up.</em></h2></Reveal>
-            <Reveal delay={160}><p>Different cravings.<br />One good place.</p></Reveal>
+            <Reveal><SectionMarker number="03" label="Food Court & Brands" light /></Reveal>
+            <Reveal delay={100} mask><h2>Discover the<br /><em>F3 Alley Food Court.</em></h2></Reveal>
+            <Reveal delay={160}>
+              <div className="food-court-header-note">
+                <p>Explore a growing collection of food outlets at F3 Alley, bringing together a variety of food experiences in one vibrant destination.</p>
+                <div className="food-court-expansion-pill">
+                  <span>Currently featuring approximately 14–15 outlets, with expansion planned to accommodate up to 20 outlets.</span>
+                </div>
+              </div>
+            </Reveal>
           </div>
           <CarouselRail label="Featured brands" dark className="brand-carousel">
             {brands.map((brand, index) => (

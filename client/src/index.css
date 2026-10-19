@@ -132,7 +132,7 @@ h2 em { color: var(--clay); }
 .day-intro { display: grid; grid-template-columns: 1fr 1.65fr .8fr; align-items: end; gap: 28px; margin-bottom: 72px; }
 .day-intro > p { max-width: 220px; margin: 0 0 5px; color: var(--ink-soft); font-size: 12px; line-height: 1.45; }
 .day-intro h2 em { color: var(--clay); }
-.day-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.day-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
 .day-flow article { min-height: 250px; padding: 23px 25px 20px 0; border-right: 1px solid var(--line); }
 .day-flow article:not(:first-child) { padding-left: 25px; }
 .day-flow article:last-child { border-right: 0; }
@@ -1137,4 +1137,249 @@ h2 em { color: var(--clay); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal, .reveal-mask { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+}
+
+
+/* ==================================================
+   EDITORIAL PROMOTIONAL SECTIONS (MATCHING SECTION 01)
+   ================================================== */
+
+/* Homepage Editorial Promotional Section */
+.promo-editorial-section {
+  background: var(--paper);
+  padding: 64px 0 54px;
+  border-bottom: 1px solid var(--line);
+}
+.promo-editorial-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.promo-editorial-side {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.promo-editorial-facts {
+  max-width: 190px;
+  padding-bottom: 4px;
+}
+.promo-editorial-facts > div {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.promo-editorial-facts b {
+  color: var(--clay);
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 400;
+}
+.promo-editorial-facts span {
+  color: var(--ink-soft);
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+.promo-editorial-facts p {
+  margin: 16px 0 0;
+  color: var(--ink-soft);
+  font-size: 10px;
+  line-height: 1.45;
+}
+.promo-editorial-copy {
+  padding-top: 24px;
+}
+.promo-editorial-copy h2 {
+  max-width: 560px;
+}
+.promo-editorial-image-wrap {
+  padding-top: 60px;
+}
+.promo-editorial-image {
+  height: 430px;
+}
+
+/* Brands Page Editorial Section (Strictly Orange, White, Black) */
+.brands-promo-editorial-section {
+  background: #110f0e;
+  color: #ffffff;
+  padding: 72px 0 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.brands-editorial-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+.brands-editorial-side {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.brands-editorial-facts {
+  max-width: 190px;
+  padding-bottom: 4px;
+}
+.brands-editorial-facts > div {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.brands-editorial-facts b {
+  color: var(--clay);
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 400;
+}
+.brands-editorial-facts span {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 9px;
+  letter-spacing: .12em;
+}
+.brands-editorial-facts p {
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  line-height: 1.45;
+}
+.brands-editorial-copy {
+  padding-top: 24px;
+}
+.brands-editorial-copy .kicker {
+  color: var(--clay);
+}
+.brands-editorial-copy h2 {
+  max-width: 560px;
+  color: #ffffff;
+}
+.brands-editorial-copy h2 em {
+  color: var(--clay);
+  font-style: italic;
+}
+.brands-editorial-copy p.body-large {
+  color: rgba(255, 255, 255, 0.82);
+}
+.brands-arrow-btn {
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+.brands-arrow-btn:hover {
+  color: var(--clay) !important;
+  border-bottom-color: var(--clay) !important;
+}
+.brands-editorial-image-wrap {
+  padding-top: 60px;
+}
+.brands-editorial-image {
+  height: 430px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.brands-editorial-image .image-caption {
+  color: #ffffff;
+  background: rgba(18, 16, 14, 0.85);
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Bento Subcategories inside Play Area */
+.bento-subcategories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.bento-sub-pill {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 10px 14px;
+  background: rgba(18, 16, 14, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s ease;
+}
+.bento-card:hover .bento-sub-pill {
+  border-color: rgba(243, 207, 98, 0.22);
+}
+.bento-sub-num {
+  font-family: var(--display);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--lime);
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+}
+.bento-sub-text h4 {
+  margin: 0 0 3px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+}
+.bento-sub-text p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: rgba(247, 244, 238, 0.75);
+}
+
+/* Food Court Section Header Note */
+.food-court-header-note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.food-court-header-note p {
+  margin: 0;
+  color: rgba(247, 244, 238, 0.7);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.food-court-expansion-pill {
+  display: inline-flex;
+  padding: 6px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--clay);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+/* Responsive updates */
+@media (max-width: 900px) {
+  .promo-editorial-grid, .brands-editorial-grid { 
+    grid-template-columns: 1fr; 
+    gap: 32px; 
+  }
+  .promo-editorial-side, .brands-editorial-side { 
+    min-height: auto; 
+    gap: 24px; 
+  }
+  .promo-editorial-image-wrap, .brands-editorial-image-wrap { 
+    padding-top: 0; 
+  }
+  .promo-editorial-image, .brands-editorial-image { 
+    height: 320px; 
+  }
+  .day-flow { grid-template-columns: repeat(2, 1fr); }
+  .bento-subcategories { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .day-flow { grid-template-columns: 1fr; }
+  .promo-editorial-image, .brands-editorial-image { 
+    height: 250px; 
+  }
 }

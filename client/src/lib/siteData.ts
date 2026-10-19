@@ -180,6 +180,11 @@ export const gallery = [
   { src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85", alt: "Crowd at a live event", tag: "The nights", tall: false },
 ];
 
+export type AmenitySubcategory = {
+  title: string;
+  description: string;
+};
+
 export type Amenity = {
   id: string;
   number: string;
@@ -190,6 +195,7 @@ export type Amenity = {
   targetAudience: string;
   detailsToConfirm: string[];
   image: string;
+  subcategories?: AmenitySubcategory[];
   phone?: string;
   timings?: string;
   location?: string;
@@ -197,92 +203,116 @@ export type Amenity = {
 
 export const amenities: Amenity[] = [
   {
-    id: "kids-play-area",
+    id: "play-area",
     number: "01",
-    title: "Kids’ Play Area",
-    tag: "Family & Play",
-    purpose: "Recreational space for children and families.",
-    activities: "Play and family recreation.",
-    targetAudience: "Children and families visiting F3 Alley.",
+    title: "Play Area",
+    tag: "Recreation & Gaming",
+    purpose: "Discover a recreational space featuring soft play activities for children and arcade gaming for an engaging entertainment experience.",
+    activities: "Soft play exploration and arcade gaming.",
+    targetAudience: "Children, families, and visitors seeking recreational entertainment.",
+    subcategories: [
+      {
+        title: "Soft Play Area",
+        description: "A dedicated play environment where children can explore, play, and enjoy an engaging recreational experience."
+      },
+      {
+        title: "Arcade Games",
+        description: "Enjoy arcade gaming as part of the recreational and entertainment experiences available at F3 Alley."
+      }
+    ],
     detailsToConfirm: [
       "Play equipment",
-      "Age restrictions",
+      "Age guidelines",
       "Safety arrangements",
-      "Timings and charges"
+      "Operating hours and access"
     ],
     image: "/images/amenities/kids-play-area.jpg"
   },
   {
-    id: "amphitheatre",
-    number: "02",
-    title: "Amphitheatre",
-    tag: "Open-Air Culture",
-    purpose: "Open-air space for entertainment and gatherings.",
-    activities: "Live performances, music events, cultural programmes and community gatherings.",
-    targetAudience: "Visitors, families and event attendees.",
-    detailsToConfirm: [
-      "Seating capacity",
-      "Stage facilities",
-      "Sound system",
-      "Event schedule and private booking availability"
-    ],
-    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
-  },
-  {
     id: "pool-table",
-    number: "03",
-    title: "Pool Table",
-    tag: "Indoor Gaming",
-    purpose: "Indoor recreational gaming for friends and groups.",
-    activities: "Pool or billiards.",
-    targetAudience: "Visitors looking for casual indoor entertainment.",
+    number: "02",
+    title: "Pool Table & Snooker",
+    tag: "Indoor Cue Sports",
+    purpose: "Enjoy a casual cue-sport experience with friends and make the most of your time at F3 Alley.",
+    activities: "Pool and snooker cue sports.",
+    targetAudience: "Friends, groups, and cue-sport enthusiasts.",
     detailsToConfirm: [
-      "Whether a pool table is available",
       "Number of tables",
       "Playing charges",
-      "Operating hours and access restrictions"
+      "Operating hours"
     ],
     image: "/images/amenities/pool-table.jpg"
   },
   {
     id: "party-space",
-    number: "04",
+    number: "03",
     title: "Open Space for Parties",
     tag: "Private Gatherings",
-    purpose: "Potential venue for private celebrations and social gatherings.",
-    activities: "Birthday parties, small celebrations, group gatherings and private events.",
-    targetAudience: "Families, friends and groups.",
+    purpose: "Bring friends and family together for celebrations and memorable social gatherings at F3 Alley.",
+    activities: "Birthday parties, small celebrations, and private social events.",
+    targetAudience: "Families, friends, and social groups.",
     detailsToConfirm: [
-      "Availability of a dedicated open space",
-      "Maximum guest capacity",
-      "Rental charges & catering options",
-      "Decorations, music permissions and booking procedure"
+      "Maximum capacity",
+      "Rental details & catering options",
+      "Booking procedures"
     ],
     image: "/images/amenities/open-party-space.jpg"
   },
   {
-    id: "verdant-convention-hall",
-    number: "05",
-    title: "Verdant Convention Hall",
-    tag: "Convention & Grand Events",
-    purpose: "Event venue in Neeladri Nagar, Electronic City for weddings, receptions, and corporate gatherings.",
+    id: "convention-hall",
+    number: "04",
+    title: "Convention Hall",
+    tag: "Verdant Convention Hall",
+    purpose: "A venue for bringing people together for events, functions, and special occasions.",
     activities: "Weddings, receptions, birthday parties, and corporate events.",
     targetAudience: "Families, event hosts, corporate groups, and wedding parties.",
     phone: "+91 99167 53756",
     timings: "Opens 11:00 AM",
-    location: "Electronic City Phase I, Bengaluru",
+    location: "Neeladri Nagar, Electronic City Phase I, Bengaluru",
     detailsToConfirm: [
       "Hall capacity and seating arrangements",
-      "Wedding and reception facilities",
-      "Birthday and corporate event packages",
-      "Rental prices and catering options",
-      "Parking availability, lighting & audio"
+      "Event packages",
+      "Rental prices and catering options"
     ],
     image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=80"
+  },
+  {
+    id: "amphitheatre",
+    number: "05",
+    title: "Amphitheatre",
+    tag: "Open-Air Culture",
+    purpose: "An open-air gathering space for entertainment, performances, and community experiences.",
+    activities: "Live performances, entertainment, and community experiences.",
+    targetAudience: "Visitors, families, and community members.",
+    detailsToConfirm: [
+      "Seating capacity",
+      "Sound & lighting setup",
+      "Event schedules"
+    ],
+    image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
-export const facilities = ["Kids’ Play Area", "Amphitheatre", "Pool Table", "Open Space for Parties", "Verdant Convention Hall", "Multiple Food Brands"];
+export const foodCourtInfo = {
+  eyebrow: "MORE TO EXPLORE",
+  headline: "F3 Alley Is Growing!",
+  supportingHeadline: "More Flavours. More Choices. More Experiences.",
+  description: "Discover a growing collection of food outlets at F3 Alley, with expansion planned to bring even more food experiences together under one destination.",
+  currentCount: "14–15",
+  plannedCount: "20",
+  plannedHighlight: "20 OUTLETS PLANNED",
+  supportingText: "Currently featuring approximately 14–15 outlets, with expansion planned to reach 20.",
+  ctaText: "Explore the Food Court",
+  ctaHref: "/brands",
+  // Brands page banner specific content
+  brandsEyebrow: "THE F3 ALLEY EXPERIENCE",
+  brandsHeadline: "More Brands. More Flavours. More to Explore.",
+  brandsDescription: "F3 Alley is growing! Discover a diverse collection of food outlets, with expansion planned to bring even more brands and food experiences together under one destination.",
+  brandsCtaText: "Explore Our Brands",
+  brandsCtaHref: "#brand-directory"
+};
+
+export const facilities = ["Play Area", "Pool Table & Snooker", "Open Space for Parties", "Convention Hall", "Amphitheatre", "Food Court (14–15 Outlets)"];
 
 export const faqItems = [
   { question: "Where is F3 Alley?", answer: "F3 Alley is located at 1st cross road, Neeladri Road, Electronic city phase 1, Bengaluru, Karnataka, 560100. Nearest Metro: VM47+GF5. Nearest Bus Stop: Neeladri Nagar Bus Stop and Wipro Gate Bus Stop." },

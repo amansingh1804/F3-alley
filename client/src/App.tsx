@@ -1,9 +1,9 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { ArrowUpRight, Instagram, Menu, X } from "lucide-react";
+import { ArrowUpRight, Instagram, Menu, Sparkles, X } from "lucide-react";
 import { Link, Route, Switch, useLocation } from "wouter";
 import Home from "@/pages/Home";
 import { Reveal } from "@/components/Reveal";
-import { brands, events, gallery, venueAddress, venueHours, generalVenueInfo } from "@/lib/siteData";
+import { brands, events, gallery, venueAddress, venueHours, generalVenueInfo, foodCourtInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
 
 const footerLinks = [
@@ -140,13 +140,61 @@ function PageShell({ children, title, eyebrow = "The F3 guide", dark = false, he
 }
 
 function AboutPage() {
-  return <PageShell title={<>The<br /><em>Alley.</em></>} eyebrow="A new kind of gathering place"><section className="inner-content section-padding"><div className="container story-grid"><Reveal><p className="kicker">The short version</p></Reveal><Reveal delay={100} mask><div><h2>Come as you are.<br /><em>Stay as you like.</em></h2><p className="body-large">F3 Alley is built around a simple idea: good places give you more reasons to linger. We are shaping a home for food worth crossing town for, culture worth talking about, and the kind of evenings that refuse to be rushed.</p></div></Reveal></div><div className="container about-image-grid"><Reveal className="about-image-large"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85" alt="Food hall interior" /></Reveal><Reveal delay={120} className="about-image-small"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85" alt="Shared food on a table" /><p>Built for the quick bite.<br />Designed for the long stay.</p></Reveal></div><div className="container principles-grid"><Reveal><span className="section-marker"><b>01</b><span>Our point of view</span></span></Reveal>{["Food first, always.", "More reasons to stay.", "A little unexpected.", "Everyone has a table."].map((item, index) => <Reveal key={item} delay={index * 70}><div className="principle"><span>0{index + 1}</span><h3>{item}</h3><p>Considered details, warm energy, and room for your version of the day.</p></div></Reveal>)}</div></section></PageShell>;
+  return <PageShell title={<>The<br /><em>Alley.</em></>} eyebrow="A new kind of gathering place"><section className="inner-content section-padding"><div className="container story-grid"><Reveal><p className="kicker">The short version</p></Reveal><Reveal delay={100} mask><div><h2>Come as you are.<br /><em>Stay as you like.</em></h2><p className="body-large">F3 Alley is built around a simple idea: good places give you more reasons to linger. We are shaping a home for food worth crossing town for, culture worth talking about, and the kind of evenings that refuse to be rushed.</p></div></Reveal></div><div className="container about-image-grid"><Reveal className="about-image-large"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=85" alt="Food hall interior" /></Reveal><Reveal delay={120} className="about-image-small"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85" alt="Shared food on a table" /><p>Built for the quick bite.<br />Designed for the long stay.</p></Reveal></div><div className="container principles-grid"><Reveal><span className="section-marker"><b>01</b><span>Our point of view</span></span></Reveal>{["Food first, always.", "Work, Connect & Unwind.", "More reasons to stay.", "Everyone has a table."].map((item, index) => <Reveal key={item} delay={index * 70}><div className="principle"><span>0{index + 1}</span><h3>{item}</h3><p>Considered details, warm energy, and room for your version of the day.</p></div></Reveal>)}</div></section></PageShell>;
 }
 
 function BrandsPage() {
   return (
     <PageShell title={<>The<br /><em>line-up.</em></>} eyebrow="Find your table">
-      <section className="directory-section section-padding">
+      <section className="brands-promo-editorial-section" aria-label="Brand expansion announcement">
+        <div className="container">
+          <div className="brands-editorial-grid">
+            <Reveal mask>
+              <div className="brands-editorial-side">
+                <SectionMarker number="01" label="Expansion Spotlight" light />
+                <div className="brands-editorial-facts">
+                  <div><b>20</b><span>OUTLETS PLANNED</span></div>
+                  <div><b>14–15</b><span>CURRENT OUTLETS</span></div>
+                  <p>Neeladri Road · Electronic City Phase I · Bengaluru</p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={100} mask>
+              <div className="brands-editorial-copy">
+                <p className="kicker">The Food Directory</p>
+                <h2>More brands.<br /><em>More to explore.</em></h2>
+                <p className="body-large">
+                  F3 Alley is growing! Discover a diverse collection of food outlets, with expansion planned to bring even more brands and food experiences together under one destination.
+                </p>
+                <a 
+                  href="#brand-directory" 
+                  className="arrow-button brands-arrow-btn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById("brand-directory");
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <span>Explore our brands</span>
+                  <ArrowUpRight size={16} strokeWidth={1.8} />
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={180} className="brands-editorial-image-wrap">
+              <div className="image-frame brands-editorial-image">
+                <img 
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85" 
+                  alt="F3 Alley Brands & Food Outlets" 
+                  loading="lazy" 
+                />
+                <span className="image-caption">20 outlets planned</span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="directory-section section-padding" id="brand-directory">
         <div className="container directory-intro">
           <Reveal><p className="kicker">Official Directory · All your favorites</p></Reveal>
           <Reveal delay={100} mask><h2>Different cravings.<br /><em>One good place.</em></h2></Reveal>
