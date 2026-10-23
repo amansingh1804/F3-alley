@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { ArrowUpRight, Instagram, Menu, Sparkles, X } from "lucide-react";
 import { Link, Route, Switch, useLocation } from "wouter";
 import Home from "@/pages/Home";
+import GalleryPage from "@/pages/GalleryPage";
 import { Reveal } from "@/components/Reveal";
 import { brands, events, gallery, venueAddress, venueHours, generalVenueInfo, foodCourtInfo } from "@/lib/siteData";
 import { SlideTabs } from "@/components/SlideTabs";
@@ -21,7 +22,7 @@ function Header() {
   const [location] = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const darkPage = location === "/" || location.startsWith("/events");
+  const darkPage = location === "/" || location.startsWith("/events") || location.startsWith("/gallery");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -81,7 +82,12 @@ function Header() {
               <span>0{index + 1}</span>{item.label}<ArrowUpRight size={20} />
             </Link>
           ))}
-          <div className="mobile-menu-footer"><span>Eat. Meet. Experience.</span><a href="https://instagram.com" target="_blank" rel="noreferrer"><Instagram size={17} /> @f3alley</a></div>
+          <div className="mobile-menu-footer">
+            <span>Eat. Meet. Experience.</span>
+            <a href="https://www.instagram.com/f3alley" target="_blank" rel="noreferrer">
+              <Instagram size={17} /> @f3alley
+            </a>
+          </div>
         </div>
       </div>
     </>
@@ -96,6 +102,31 @@ function Footer() {
           <div>
             <Link href="/" className="footer-logo"><img src="/f3-logo.png" alt="F3 Alley" /></Link>
             <p>More than a food court.<br />A place to make a day of it.</p>
+            <div style={{ marginTop: '16px' }}>
+              <a 
+                href="https://www.instagram.com/f3alley" 
+                target="_blank" 
+                rel="noreferrer" 
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '7px 14px',
+                  background: 'rgba(247, 244, 238, 0.08)',
+                  border: '1px solid rgba(247, 244, 238, 0.16)',
+                  borderRadius: '100px',
+                  color: 'var(--cream)',
+                  fontSize: '11px',
+                  letterSpacing: '0.06em',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <Instagram size={14} color="var(--lime)" />
+                <span>Follow @f3alley</span>
+                <ArrowUpRight size={13} />
+              </a>
+            </div>
           </div>
           <div className="footer-links">
             <p className="footer-label">Explore</p>
@@ -124,11 +155,30 @@ function Footer() {
             <span><a href={generalVenueInfo.googleMapsLink} target="_blank" rel="noreferrer" style={{textDecoration: 'underline'}}>{venueAddress}</a></span>
             <span>{venueHours}</span>
             <span>{generalVenueInfo.phone} · <a href={`mailto:${generalVenueInfo.email}`}>{generalVenueInfo.email}</a></span>
+            <span>
+              <a 
+                href="https://www.instagram.com/f3alley" 
+                target="_blank" 
+                rel="noreferrer" 
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--lime)', marginTop: '2px' }}
+              >
+                <Instagram size={13} /> @f3alley on Instagram
+              </a>
+            </span>
           </div>
         </div>
         <div className="footer-bottom">
           <span>© F3 Alley 2026</span>
-          <span>Built for good times <i>✳</i></span>
+          <span>
+            <a 
+              href="https://www.instagram.com/f3alley" 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', color: 'inherit' }}
+            >
+              <Instagram size={12} /> @f3alley
+            </a> <i>✳</i> Built for good times
+          </span>
           <a href="#top">Back to top ↑</a>
         </div>
       </div>
@@ -233,13 +283,10 @@ function EventsPage() {
   );
 }
 
-function GalleryPage() {
-  return <PageShell title={<>Seen<br /><em>at F3.</em></>} eyebrow="Keep looking"><section className="directory-section section-padding"><div className="container gallery-page-grid">{gallery.concat(gallery).map((image, index) => <Reveal key={`${image.src}-${index}`} delay={(index % 4) * 70} className={index % 3 === 0 ? "gallery-page-item gallery-tall" : "gallery-page-item"}><img src={image.src} alt={image.alt} loading="lazy" /><span>{image.tag} <ArrowUpRight size={14} /></span></Reveal>)}</div></section></PageShell>;
-}
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
-  return <PageShell title={<>Let's<br /><em>make a plan.</em></>} eyebrow="Say hello"><section className="contact-section section-padding"><div className="container contact-grid"><Reveal><p className="kicker">For bookings, brands, and very good questions</p><h2>Tell us what<br /><em>you have in mind.</em></h2><div className="contact-details" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}><p><strong>F3 Alley</strong></p><p><a href={generalVenueInfo.googleMapsLink} target="_blank" rel="noreferrer" style={{textDecoration: 'underline'}}>{generalVenueInfo.address}</a></p><p><strong>Landmark:</strong> {generalVenueInfo.landmark}</p><p><strong>Parking:</strong> {generalVenueInfo.parking}</p><p><strong>Transit:</strong> {generalVenueInfo.nearestMetro} | Bus: {generalVenueInfo.nearestBusStop}</p><p><strong>Travel:</strong> {generalVenueInfo.distanceAirport} from Airport, {generalVenueInfo.distanceRailway} from Railway</p><p>{venueHours}</p><p>Phone: {generalVenueInfo.phone} | Email: {generalVenueInfo.email}</p></div></Reveal><Reveal delay={140}><form className="contact-form" onSubmit={(event) => { event.preventDefault(); setSent(true); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input type="email" required placeholder="you@example.com" /></label><label>What can we help with?<select defaultValue="general"><option value="general">A general hello</option><option value="event">Plan a private event</option><option value="brand">Partner with F3 Alley</option></select></label><label>Message<textarea required placeholder="Tell us the good stuff..." rows={5} /></label><button type="submit" className="form-submit">{sent ? "Message noted ✓" : "Send it over"}<ArrowUpRight size={18} /></button>{sent && <p className="form-success">Thanks — this is a prototype inbox for now, but the interaction is ready for your real form endpoint.</p>}</form></Reveal></div></section></PageShell>;
+  return <PageShell title={<>Let's<br /><em>make a plan.</em></>} eyebrow="Say hello"><section className="contact-section section-padding"><div className="container contact-grid"><Reveal><p className="kicker">For bookings, brands, and very good questions</p><h2>Tell us what<br /><em>you have in mind.</em></h2><div className="contact-details" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}><p><strong>F3 Alley</strong></p><p><a href={generalVenueInfo.googleMapsLink} target="_blank" rel="noreferrer" style={{textDecoration: 'underline'}}>{generalVenueInfo.address}</a></p><p><strong>Landmark:</strong> {generalVenueInfo.landmark}</p><p><strong>Parking:</strong> {generalVenueInfo.parking}</p><p><strong>Transit:</strong> {generalVenueInfo.nearestMetro} | Bus: {generalVenueInfo.nearestBusStop}</p><p><strong>Travel:</strong> {generalVenueInfo.distanceAirport} from Airport, {generalVenueInfo.distanceRailway} from Railway</p><p>{venueHours}</p><p>Phone: {generalVenueInfo.phone} | Email: {generalVenueInfo.email}</p><p>Instagram: <a href="https://www.instagram.com/f3alley" target="_blank" rel="noreferrer" style={{textDecoration: 'underline'}}>@f3alley</a></p></div></Reveal><Reveal delay={140}><form className="contact-form" onSubmit={(event) => { event.preventDefault(); setSent(true); }}><label>Name<input required placeholder="Your name" /></label><label>Email<input type="email" required placeholder="you@example.com" /></label><label>What can we help with?<select defaultValue="general"><option value="general">A general hello</option><option value="event">Plan a private event</option><option value="brand">Partner with F3 Alley</option></select></label><label>Message<textarea required placeholder="Tell us the good stuff..." rows={5} /></label><button type="submit" className="form-submit">{sent ? "Message noted ✓" : "Send it over"}<ArrowUpRight size={18} /></button>{sent && <p className="form-success">Thanks — this is a prototype inbox for now, but the interaction is ready for your real form endpoint.</p>}</form></Reveal></div></section></PageShell>;
 }
 
 function NotFound() { return <PageShell title={<>Wrong<br /><em>turn.</em></>} eyebrow="404"><section className="directory-section section-padding"><div className="container empty-state large-empty">This page wandered off. <Link href="/">Back to the alley <ArrowUpRight size={18} /></Link></div></section></PageShell>; }

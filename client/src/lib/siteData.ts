@@ -173,19 +173,246 @@ export const offers: { title: string; note: string; label: string; color: string
   { title: "Lunch Combo", note: "Special express lunch bowls starting at just ₹149 from Wow! China and Wow! Momo.", label: "₹149 ONLY", color: "orange" },
 ];
 
-export const gallery = [
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03727.JPG?tr=w-1200,q-80", alt: "F3 Alley illuminated neon entrance at night", tag: "The Entrance", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03701.JPG?tr=w-1200,q-80", alt: "Glowing light portal corridor lined with vertical gardens", tag: "The Walkway", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?tr=w-1200,q-80", alt: "Stepped open-air amphitheatre with giant cinema LED screen", tag: "Amphitheatre", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03686.JPG?tr=w-1200,q-80", alt: "Golden Buddha sculpture in serene Zen courtyard", tag: "Zen Courtyard", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03708.JPG?tr=w-1200,q-80", alt: "Vibrant evening food court and artisan dining hall", tag: "Food Street", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?tr=w-1200,q-80", alt: "Children's playground and colorful adventure slides", tag: "Play Zone", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?tr=w-1200,q-80", alt: "Multi-level atrium architecture and mezzanine bridges", tag: "Architecture", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03704.JPG?tr=w-1200,q-80", alt: "Illuminated rock waterfall and tranquil garden water feature", tag: "Waterfall Wall", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?tr=w-1200,q-80", alt: "Canopied rooftop terrace open space for celebrations", tag: "Event Terrace", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?tr=w-1200,q-80", alt: "Open-air movie screening under tensile canopy", tag: "Movie Nights", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03693.JPG?tr=w-1200,q-80", alt: "Botanical green walkway with warm lighting columns", tag: "Green Canopy", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03650.JPG?tr=w-1200,q-80", alt: "Friends sharing food and memorable moments", tag: "The Community", tall: false },
+export interface GalleryPhoto {
+  id: string;
+  src: string;
+  alt: string;
+  title: string;
+  tag: string;
+  category: "Architecture" | "Night Vibes" | "Food & Dining" | "Zen & Nature" | "Recreation";
+  location: string;
+  timeOfDay: string;
+  tall?: boolean;
+  wide?: boolean;
+  caption: string;
+  likes: number;
+}
+
+export const gallery: GalleryPhoto[] = [
+  {
+    id: "entrance-neon",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03727.JPG?tr=w-1200,q-80",
+    alt: "F3 Alley illuminated neon entrance at night",
+    title: "The Neon Gateway",
+    tag: "The Entrance",
+    category: "Architecture",
+    location: "Main Street Entrance · Ground Level",
+    timeOfDay: "20:45 · Twilight",
+    tall: false,
+    wide: true,
+    caption: "The glowing architectural gateway welcoming night travelers into the Alley with warm neon accents.",
+    likes: 42
+  },
+  {
+    id: "light-portal",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03701.JPG?tr=w-1200,q-80",
+    alt: "Glowing light portal corridor lined with vertical gardens",
+    title: "The Luminous Portal",
+    tag: "The Walkway",
+    category: "Architecture",
+    location: "Central Walkway · West Wing",
+    timeOfDay: "21:15 · Night",
+    tall: true,
+    wide: false,
+    caption: "Symmetrical light arches flanked by hanging flora, creating a mesmerizing transition between spaces.",
+    likes: 67
+  },
+  {
+    id: "amphitheatre-screen",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?tr=w-1200,q-80",
+    alt: "Stepped open-air amphitheatre with giant cinema LED screen",
+    title: "Amphitheatre & Giant LED",
+    tag: "Amphitheatre",
+    category: "Night Vibes",
+    location: "Open-Air Culture Deck",
+    timeOfDay: "20:00 · Evening",
+    tall: false,
+    wide: true,
+    caption: "Stepped stadium seating beneath a tensile pavilion, hosting live sports screenings, screenings, and acoustic sets.",
+    likes: 58
+  },
+  {
+    id: "zen-courtyard",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03686.JPG?tr=w-1200,q-80",
+    alt: "Golden Buddha sculpture in serene Zen courtyard",
+    title: "Serene Zen Courtyard",
+    tag: "Zen Courtyard",
+    category: "Zen & Nature",
+    location: "Inner Sanctuary · Courtyard",
+    timeOfDay: "18:30 · Sunset",
+    tall: true,
+    wide: false,
+    caption: "A meditative golden centerpiece set against natural slate textures and backlit foliage, offering calm amidst the energy.",
+    likes: 53
+  },
+  {
+    id: "food-street",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03708.JPG?tr=w-1200,q-80",
+    alt: "Vibrant evening food court and artisan dining hall",
+    title: "The Food Street Promenade",
+    tag: "Food Street",
+    category: "Food & Dining",
+    location: "Food Court · Level 1 & 2",
+    timeOfDay: "20:30 · Dinner Rush",
+    tall: false,
+    wide: false,
+    caption: "Lively stalls serving fresh regional flavors, artisanal coffees, and street-style bites until late night.",
+    likes: 81
+  },
+  {
+    id: "play-zone",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?tr=w-1200,q-80",
+    alt: "Children's playground and colorful adventure slides",
+    title: "Soft Play Adventure Zone",
+    tag: "Play Zone",
+    category: "Recreation",
+    location: "Recreation Wing · Level 1",
+    timeOfDay: "17:15 · Afternoon",
+    tall: true,
+    wide: false,
+    caption: "A safe, multi-tiered soft play adventure castle designed for energetic kids and carefree family afternoons.",
+    likes: 38
+  },
+  {
+    id: "architecture-atrium",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?tr=w-1200,q-80",
+    alt: "Multi-level atrium architecture and mezzanine bridges",
+    title: "Grand Atrium Architecture",
+    tag: "Architecture",
+    category: "Architecture",
+    location: "Main Atrium & Bridges",
+    timeOfDay: "21:30 · Night",
+    tall: false,
+    wide: true,
+    caption: "Industrial elegance with soaring ceilings, exposed steel beams, and warm timber railings connecting multiple dining decks.",
+    likes: 74
+  },
+  {
+    id: "waterfall-wall",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03704.JPG?tr=w-1200,q-80",
+    alt: "Illuminated rock waterfall and tranquil garden water feature",
+    title: "Rock Waterfall & Flora",
+    tag: "Waterfall Wall",
+    category: "Zen & Nature",
+    location: "Water Garden Terrace",
+    timeOfDay: "19:45 · Dusk",
+    tall: true,
+    wide: false,
+    caption: "Cascading rock waters lit with amber illumination, filling the courtyard with peaceful acoustic echoes.",
+    likes: 49
+  },
+  {
+    id: "event-terrace",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?tr=w-1200,q-80",
+    alt: "Canopied rooftop terrace open space for celebrations",
+    title: "Canopied Event Terrace",
+    tag: "Event Terrace",
+    category: "Night Vibes",
+    location: "Verdant Hall · Level 2",
+    timeOfDay: "19:00 · Evening",
+    tall: false,
+    wide: true,
+    caption: "Expansive high-ceiling terrace equipped with custom acoustic drapery for private parties and community galas.",
+    likes: 62
+  },
+  {
+    id: "movie-nights",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?tr=w-1200,q-80",
+    alt: "Open-air movie screening under tensile canopy",
+    title: "Moonlit Cinema Evenings",
+    tag: "Movie Nights",
+    category: "Night Vibes",
+    location: "Outdoor Cinema Amphitheatre",
+    timeOfDay: "21:00 · Late Show",
+    tall: false,
+    wide: false,
+    caption: "Watching cinematic classics under the Bengaluru night sky with fresh snacks and communal warmth.",
+    likes: 93
+  },
+  {
+    id: "green-canopy",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03693.JPG?tr=w-1200,q-80",
+    alt: "Botanical green walkway with warm lighting columns",
+    title: "The Botanical Canopy",
+    tag: "Green Canopy",
+    category: "Zen & Nature",
+    location: "East Garden Promenade",
+    timeOfDay: "19:15 · Blue Hour",
+    tall: true,
+    wide: false,
+    caption: "Lush tropical creepers weaving along architectural steel, illuminated by ambient warm lanterns.",
+    likes: 56
+  },
+  {
+    id: "the-community",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03650.JPG?tr=w-1200,q-80",
+    alt: "Friends sharing food and memorable moments",
+    title: "Shared Table Stories",
+    tag: "The Community",
+    category: "Food & Dining",
+    location: "Communal Long Tables",
+    timeOfDay: "20:15 · Evening",
+    tall: false,
+    wide: true,
+    caption: "Long communal tables that transform strangers into friends over artisan pizzas, dim sums, and dessert.",
+    likes: 88
+  },
+  {
+    id: "cue-sports-lounge",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03688.JPG?tr=w-1200,q-80",
+    alt: "Championship pool and snooker tables in lounge",
+    title: "Cue Sports & Pool Lounge",
+    tag: "Pool Lounge",
+    category: "Recreation",
+    location: "Snooker Deck · Level 1",
+    timeOfDay: "22:00 · Late Hours",
+    tall: false,
+    wide: false,
+    caption: "Tournament-grade green baize tables, cue racks, and ambient overhead pendant lights for casual play.",
+    likes: 65
+  },
+  {
+    id: "alfresco-dining",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03643.JPG?tr=w-1200,q-80",
+    alt: "Open-air alfresco dining with garden umbrellas",
+    title: "Alfresco Dining Deck",
+    tag: "Alfresco Deck",
+    category: "Food & Dining",
+    location: "North Garden Terrace",
+    timeOfDay: "17:45 · Golden Hour",
+    tall: false,
+    wide: true,
+    caption: "Fresh Bangalore breeze, cozy wooden high-tops, and open skies for slow coffee and conversation.",
+    likes: 71
+  },
+  {
+    id: "arcade-arena",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03685.JPG?tr=w-1200,q-80",
+    alt: "Arcade gaming machines glowing with neon lights",
+    title: "Arcade Lights & Gaming",
+    tag: "Arcade Arena",
+    category: "Recreation",
+    location: "F3 Gaming Den",
+    timeOfDay: "21:45 · High Energy",
+    tall: true,
+    wide: false,
+    caption: "Nostalgic neon racing rigs, basketball hoops, and modern claw machines buzzing with friendly competition.",
+    likes: 79
+  },
+  {
+    id: "nightfall-alley",
+    src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03652.JPG?tr=w-1200,q-80",
+    alt: "Vibrant night gathering across the illuminated alley",
+    title: "Nightfall in the Alley",
+    tag: "Alley Nights",
+    category: "Night Vibes",
+    location: "Central Courtyard Deck",
+    timeOfDay: "22:30 · Midnight Vibe",
+    tall: false,
+    wide: true,
+    caption: "When the city slows down, F3 Alley lights up — laughter, warm coffee, and unforgettable memories.",
+    likes: 95
+  }
 ];
 
 export type AmenitySubcategory = {
@@ -338,6 +565,8 @@ export const generalVenueInfo = {
   phone: "+91 9113617904",
   whatsapp: "+91 9113617904",
   email: "f3alley369@gmail.com",
+  instagram: "https://www.instagram.com/f3alley",
+  instagramHandle: "@f3alley",
   googleMapsLink: "https://share.google/kUrvtUq5i1UqoQeXK",
   address: "f3 alley, 1st cross road, Neeladri Road, Electronic city phase 1, Bengaluru, Karnataka, 560100",
   landmark: "Gate no. 1 (Exit from Gate no. 2)",

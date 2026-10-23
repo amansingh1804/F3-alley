@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from "react";
-import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronRight, Clock3, Info, MapPin, MoveUpRight, Phone, Play, Sparkles, Utensils, X } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, CalendarDays, ChevronDown, ChevronRight, ChevronUp, Clock3, Info, Instagram, MapPin, MoveUpRight, Phone, Play, Sparkles, Utensils, X } from "lucide-react";
 import { Link } from "wouter";
 import { Reveal } from "@/components/Reveal";
 import { CarouselRail } from "@/components/CarouselRail";
@@ -20,6 +20,101 @@ function ArrowButton({ children, href = "#", dark = false }: { children: React.R
     <Link href={href} className={`arrow-button ${dark ? "arrow-button-dark" : ""}`}>
       <span>{children}</span><ArrowUpRight size={16} strokeWidth={1.8} />
     </Link>
+  );
+}
+
+function AmenityCard({ amenity }: { amenity: typeof amenities[0] }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <article className={`bento-card ${isExpanded ? "is-expanded" : ""}`}>
+      <img src={amenity.image} alt={amenity.title} loading="lazy" className="bento-bg" />
+      <div className="bento-overlay" />
+      
+      <div className="bento-card-header">
+        <span className="bento-tag">{amenity.tag}</span>
+        <span className="bento-number">{amenity.number}</span>
+      </div>
+
+      <div className="bento-card-body">
+        <div className="bento-primary-head">
+          <div className="bento-content">
+            <h3>{amenity.title}</h3>
+          </div>
+
+          <button
+            type="button"
+            className="bento-read-more-btn"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            aria-expanded={isExpanded}
+            aria-label={`${isExpanded ? "Show less info for" : "Read more about"} ${amenity.title}`}
+          >
+            <span>{isExpanded ? "Show Less" : "Read More"}</span>
+            {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+        </div>
+
+        <div className={`bento-expandable-details ${isExpanded ? "is-open" : ""}`}>
+          <p className="bento-purpose">{amenity.purpose}</p>
+
+          {amenity.subcategories && (
+            <div className="bento-subcategories">
+              {amenity.subcategories.map((sub, i) => (
+                <div key={sub.title} className="bento-sub-pill">
+                  <span className="bento-sub-num">0{i + 1}</span>
+                  <div className="bento-sub-text">
+                    <h4>{sub.title}</h4>
+                    <p>{sub.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="bento-detail-panel">
+            <div className="bento-detail-row">
+              <span className="bento-detail-label">Activities</span>
+              <p>{amenity.activities}</p>
+            </div>
+            <div className="bento-detail-row">
+              <span className="bento-detail-label">Audience</span>
+              <p>{amenity.targetAudience}</p>
+            </div>
+            {(amenity.phone || amenity.timings) && (
+              <div className="bento-contact-row">
+                {amenity.phone && (
+                  <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-phone-badge">
+                    <Phone size={11} /> {amenity.phone}
+                  </a>
+                )}
+                {amenity.timings && (
+                  <span className="bento-time-badge">
+                    <Clock3 size={11} /> {amenity.timings}
+                  </span>
+                )}
+              </div>
+            )}
+            <div className="bento-confirm-strip">
+              <Info size={12} />
+              <span>To confirm:</span>
+              {amenity.detailsToConfirm.map((d) => (
+                <span key={d} className="bento-confirm-chip">{d}</span>
+              ))}
+            </div>
+            <div className="bento-actions">
+              <Link href="/contact" className="bento-inquire">
+                Inquire <ArrowUpRight size={13} />
+              </Link>
+              {amenity.phone && (
+                <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-call-direct">
+                  <Phone size={12} /> Call direct
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -136,81 +231,43 @@ export default function Home() {
           <div className="bento-grid">
             {amenities.map((amenity, index) => (
               <Reveal key={amenity.id} delay={index * 100} className={`bento-item bento-item-${index + 1}`}>
-                <article className="bento-card">
-                  <img src={amenity.image} alt={amenity.title} loading="lazy" className="bento-bg" />
-                  <div className="bento-overlay" />
-                  
-                  <div className="bento-card-header">
-                    <span className="bento-tag">{amenity.tag}</span>
-                    <span className="bento-number">{amenity.number}</span>
-                  </div>
-
-                  <div className="bento-card-body">
-                    <div className="bento-content">
-                      <h3>{amenity.title}</h3>
-                      <p className="bento-purpose">{amenity.purpose}</p>
-                    </div>
-
-                    {amenity.subcategories && (
-                      <div className="bento-subcategories">
-                        {amenity.subcategories.map((sub, i) => (
-                          <div key={sub.title} className="bento-sub-pill">
-                            <span className="bento-sub-num">0{i + 1}</span>
-                            <div className="bento-sub-text">
-                              <h4>{sub.title}</h4>
-                              <p>{sub.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="bento-detail-panel">
-                      <div className="bento-detail-row">
-                        <span className="bento-detail-label">Activities</span>
-                        <p>{amenity.activities}</p>
-                      </div>
-                      <div className="bento-detail-row">
-                        <span className="bento-detail-label">Audience</span>
-                        <p>{amenity.targetAudience}</p>
-                      </div>
-                      {(amenity.phone || amenity.timings) && (
-                        <div className="bento-contact-row">
-                          {amenity.phone && (
-                            <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-phone-badge">
-                              <Phone size={11} /> {amenity.phone}
-                            </a>
-                          )}
-                          {amenity.timings && (
-                            <span className="bento-time-badge">
-                              <Clock3 size={11} /> {amenity.timings}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                      <div className="bento-confirm-strip">
-                        <Info size={12} />
-                        <span>To confirm:</span>
-                        {amenity.detailsToConfirm.map((d) => (
-                          <span key={d} className="bento-confirm-chip">{d}</span>
-                        ))}
-                      </div>
-                      <div className="bento-actions">
-                        <Link href="/contact" className="bento-inquire">
-                          Inquire <ArrowUpRight size={13} />
-                        </Link>
-                        {amenity.phone && (
-                          <a href={`tel:${amenity.phone.replace(/[\s-]/g, '')}`} className="bento-call-direct">
-                            <Phone size={12} /> Call direct
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                <AmenityCard amenity={amenity} />
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="gallery-section section-padding" id="gallery">
+        <div className="container">
+          <div className="gallery-top"><Reveal><SectionMarker number="03" label="Seen at F3" /></Reveal><Reveal delay={100} mask><h2>Keep<br /><em>looking.</em></h2></Reveal><Reveal delay={160}><p>Some nights<br />look better in motion.</p></Reveal></div>
+        </div>
+
+        {/* Horizontal film-strip gallery */}
+        <div className="filmstrip-wrap">
+          <div className="filmstrip-rail">
+            {gallery.map((image, index) => (
+              <Reveal key={image.src} delay={index * 60} className="filmstrip-frame">
+                <button className="filmstrip-btn" onClick={() => setSelectedImage(image.src)}>
+                  <img src={image.src} alt={image.alt} loading="lazy" />
+                  <div className="filmstrip-caption">
+                    <span className="filmstrip-tag">{image.tag}</span>
+                    <MoveUpRight size={13} />
+                  </div>
+                  <div className="filmstrip-index">{String(index + 1).padStart(2, '0')}</div>
+                </button>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="container">
+          <Reveal delay={200} className="filmstrip-footer">
+            <div className="filmstrip-count">
+              <span>{gallery.length}</span> moments captured
+            </div>
+            <ArrowButton href="/gallery">View full gallery</ArrowButton>
+          </Reveal>
         </div>
       </section>
 
@@ -238,7 +295,7 @@ export default function Home() {
       <section className="brands-section section-padding dark-section" id="brands-preview">
         <div className="container">
           <div className="section-head light-head">
-            <Reveal><SectionMarker number="03" label="Food Court & Brands" light /></Reveal>
+            <Reveal><SectionMarker number="04" label="Food Court & Brands" light /></Reveal>
             <Reveal delay={100} mask><h2>Discover the<br /><em>F3 Alley Food Court.</em></h2></Reveal>
             <Reveal delay={160}>
               <div className="food-court-header-note">
@@ -278,7 +335,7 @@ export default function Home() {
             <p className="poster-caption">The kind of night you talk about tomorrow.</p>
           </Reveal>
           <Reveal delay={140} className="experience-copy">
-            <SectionMarker number="04" label="Stay for the plot" light />
+            <SectionMarker number="05" label="Stay for the plot" light />
             <h2>Come for the<br /><em>food.</em><br />Stay for the <em>feeling.</em></h2>
             <p className="body-light">There is always another reason to stay: live music, pop-ups, big screen moments, tiny celebrations, and the table next to yours becoming your new favourite people.</p>
             <div className="facilities-list">{facilities.slice(0, 4).map((item, index) => <span key={item}><b>0{index + 1}</b>{item}</span>)}</div>
@@ -289,7 +346,7 @@ export default function Home() {
       <section className="offers-section section-padding" id="offers">
         <div className="container">
           <div className="section-head offers-head">
-            <Reveal><SectionMarker number="05" label="A little extra" /></Reveal>
+            <Reveal><SectionMarker number="06" label="A little extra" /></Reveal>
             <Reveal delay={100} mask><h2>Good things<br /><em>happening.</em></h2></Reveal>
             <Reveal delay={160}><p>Small reasons<br />to come back.</p></Reveal>
           </div>
@@ -302,7 +359,7 @@ export default function Home() {
       <section className="events-section section-padding dark-section" id="events">
         <div className="container">
           <div className="section-head light-head">
-            <Reveal><SectionMarker number="06" label="Put it in the diary" light /></Reveal>
+            <Reveal><SectionMarker number="07" label="Put it in the diary" light /></Reveal>
             <Reveal delay={100} mask><h2>Make plans<br /><em>worth keeping.</em></h2></Reveal>
             <Reveal delay={160}><p>There is always<br />something next.</p></Reveal>
           </div>
@@ -313,17 +370,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="gallery-section section-padding" id="gallery">
-        <div className="container">
-          <div className="gallery-top"><Reveal><SectionMarker number="07" label="Seen at F3" /></Reveal><Reveal delay={100} mask><h2>Keep<br /><em>looking.</em></h2></Reveal><Reveal delay={160}><p>Some nights<br />look better in motion.</p></Reveal></div>
-          <div className="gallery-grid">{gallery.map((image, index) => <Reveal key={image.src} delay={index * 80} className={image.tall ? "gallery-item gallery-tall" : "gallery-item"}><button onClick={() => setSelectedImage(image.src)}><img src={image.src} alt={image.alt} loading="lazy" /><span>{image.tag} <MoveUpRight size={14} /></span></button></Reveal>)}</div>
-        </div>
-      </section>
-
       <section className="visit-section">
         <div className="visit-image" aria-hidden="true" />
         <div className="visit-overlay" />
-        <div className="container visit-content"><Reveal mask><SectionMarker number="08" label="Your next stop" light /></Reveal><Reveal delay={100} mask><h2>Find<br /><em>F3 Alley.</em></h2></Reveal><Reveal delay={180}><div className="visit-details"><p><MapPin size={18} /> {venueAddress}</p><p><Clock3 size={18} /> {venueHours}</p></div><ArrowButton href="/contact" dark>Plan your visit</ArrowButton></Reveal></div>
+        <div className="container visit-content"><Reveal mask><SectionMarker number="08" label="Your next stop" light /></Reveal><Reveal delay={100} mask><h2>Find<br /><em>F3 Alley.</em></h2></Reveal><Reveal delay={180}><div className="visit-details"><p><MapPin size={18} /> {venueAddress}</p><p><Clock3 size={18} /> {venueHours}</p><p><Instagram size={18} /> <a href="https://www.instagram.com/f3alley" target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>@f3alley</a></p></div><ArrowButton href="/contact" dark>Plan your visit</ArrowButton></Reveal></div>
       </section>
 
       <section className="newsletter-section section-padding" id="contact">
@@ -336,6 +386,26 @@ export default function Home() {
           </Reveal>
           <Reveal delay={180} className="newsletter-form-wrap">
             <p className="newsletter-intro">New openings, late-night reasons, and the occasional very good idea.</p>
+            <div style={{ marginBottom: '20px' }}>
+              <a 
+                href="https://www.instagram.com/f3alley" 
+                target="_blank" 
+                rel="noreferrer" 
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '8px', 
+                  fontSize: '11px', 
+                  letterSpacing: '0.08em', 
+                  textTransform: 'uppercase', 
+                  color: 'var(--clay)', 
+                  fontWeight: 600,
+                  textDecoration: 'none'
+                }}
+              >
+                <Instagram size={15} /> Follow @f3alley on Instagram <ArrowUpRight size={13} />
+              </a>
+            </div>
             <form className="contact-form home-contact-form" onSubmit={(event) => { event.preventDefault(); setContactSent(true); }}>
               <label>
                 Name
