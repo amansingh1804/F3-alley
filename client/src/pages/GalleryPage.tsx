@@ -17,7 +17,8 @@ import {
   Film,
   MapPin,
   Check,
-  Instagram
+  Instagram,
+  Play
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { gallery, type GalleryPhoto } from "@/lib/siteData";
@@ -110,14 +111,26 @@ export default function GalleryPage() {
 
   return (
     <div className="gallery-experience">
-      {/* Editorial Intro Header */}
+      {/* Editorial Intro Header with Background Video */}
       <section className="gallery-hero-intro">
-        <div className="container">
+        <video 
+          className="gallery-hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="gallery-hero-overlay" />
+
+        <div className="container gallery-hero-container">
           <div className="gallery-hero-meta">
             <Reveal>
               <div className="gallery-eyebrow">
                 <span className="live-pulse" />
-                <span>ARCHIVAL PHOTO STREAM · NEELADRI NAGAR, E-CITY</span>
+                <span>ARCHIVAL PHOTO &amp; MOTION STREAM · NEELADRI NAGAR, E-CITY</span>
               </div>
             </Reveal>
             <Reveal delay={100} mask>
@@ -376,6 +389,38 @@ export default function GalleryPage() {
           ) : (
             /* Curated Lookbook Mode (Default) */
             <div className="gallery-curated-grid">
+              {/* Featured Cinema Motion Reel Card */}
+              <article className="curated-card curated-wide curated-video-card">
+                <div className="curated-img-container">
+                  <video 
+                    src="/videos/hero-bg.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline 
+                    className="curated-video-el"
+                  />
+                  <div className="curated-card-overlay" />
+                  
+                  <div className="curated-card-head">
+                    <span className="curated-idx">FILM</span>
+                    <span className="curated-pill curated-video-pill">
+                      <Play size={10} fill="currentColor" /> MOTION REEL
+                    </span>
+                  </div>
+
+                  <div className="curated-card-foot">
+                    <div className="curated-foot-content">
+                      <span className="curated-location">
+                        <MapPin size={11} /> Main Street &amp; Atrium Deck
+                      </span>
+                      <h3 className="curated-title">F3 Alley in Motion</h3>
+                      <p className="curated-desc">Night atmosphere, architecture lighting, and authentic evening flow captured live at F3 Alley.</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
               {filteredPhotos.map((photo, index) => {
                 const isWide = index % 5 === 0;
                 const isTall = index % 3 === 1;
