@@ -305,4 +305,31 @@ function Router() {
   );
 }
 
-export default function App() { return <div className="app-shell"><Header /><Router /><Footer /></div>; }
+function FloatingWhatsApp() {
+  const whatsappUrl = "https://wa.me/919113617904?text=" + encodeURIComponent("hii i have some questions");
+
+  return (
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="floating-whatsapp-btn"
+      aria-label="Chat with us on WhatsApp"
+      title="Chat on WhatsApp"
+    >
+      <img src="/whatsapp-logo.png" alt="WhatsApp" className="floating-whatsapp-icon" />
+      <span className="floating-whatsapp-tooltip">Chat with us</span>
+    </a>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="app-shell">
+      <Header />
+      <Router />
+      <Footer />
+      <FloatingWhatsApp />
+    </div>
+  );
+}
