@@ -144,7 +144,7 @@ export const events: EventItem[] = [
     time: "7:00 PM - 10:00 PM",
     tag: "Live Music",
     location: "Main Stage Area",
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03700.JPG?updatedAt=1792739650033",
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03700.JPG?tr=w-1200,q-80",
     description: "Start your weekend right with live acoustic performances from local artists. Grab a drink and your favorite food, and enjoy the vibe."
   },
   {
@@ -153,7 +153,7 @@ export const events: EventItem[] = [
     time: "8:00 PM Onwards",
     tag: "Sports Screening",
     location: "The Alley Courtyard",
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?updatedAt=1792739625529",
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?tr=w-1200,q-80",
     description: "Watch the biggest football and cricket matches live on our massive screens. The energy is electric!"
   },
   {
@@ -162,7 +162,7 @@ export const events: EventItem[] = [
     time: "5:00 PM - 11:00 PM",
     tag: "Gaming & Fun",
     location: "Arcade Zone",
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03681.JPG?updatedAt=1792739652026",
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03681.JPG?tr=w-1200,q-80",
     description: "Challenge your friends to classic retro games. High scores of the night win free desserts from participating brands!"
   }
 ];
@@ -174,18 +174,18 @@ export const offers: { title: string; note: string; label: string; color: string
 ];
 
 export const gallery = [
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03727.JPG?updatedAt=1792739641217", alt: "F3 Alley illuminated neon entrance at night", tag: "The Entrance", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03701.JPG?updatedAt=1792739646313", alt: "Glowing light portal corridor lined with vertical gardens", tag: "The Walkway", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?updatedAt=1792739646490", alt: "Stepped open-air amphitheatre with giant cinema LED screen", tag: "Amphitheatre", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03686.JPG?updatedAt=1792739649848", alt: "Golden Buddha sculpture in serene Zen courtyard", tag: "Zen Courtyard", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03708.JPG?updatedAt=1792739649410", alt: "Vibrant evening food court and artisan dining hall", tag: "Food Street", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?updatedAt=1792739647419", alt: "Children's playground and colorful adventure slides", tag: "Play Zone", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?updatedAt=1792739645350", alt: "Multi-level atrium architecture and mezzanine bridges", tag: "Architecture", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03704.JPG?updatedAt=1792739649922", alt: "Illuminated rock waterfall and tranquil garden water feature", tag: "Waterfall Wall", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?updatedAt=1792739644887", alt: "Canopied rooftop terrace open space for celebrations", tag: "Event Terrace", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?updatedAt=1792739625529", alt: "Open-air movie screening under tensile canopy", tag: "Movie Nights", tall: false },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03693.JPG?updatedAt=1792739642058", alt: "Botanical green walkway with warm lighting columns", tag: "Green Canopy", tall: true },
-  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03650.JPG?updatedAt=1792739652404", alt: "Friends sharing food and memorable moments", tag: "The Community", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03727.JPG?tr=w-1200,q-80", alt: "F3 Alley illuminated neon entrance at night", tag: "The Entrance", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03701.JPG?tr=w-1200,q-80", alt: "Glowing light portal corridor lined with vertical gardens", tag: "The Walkway", tall: true },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?tr=w-1200,q-80", alt: "Stepped open-air amphitheatre with giant cinema LED screen", tag: "Amphitheatre", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03686.JPG?tr=w-1200,q-80", alt: "Golden Buddha sculpture in serene Zen courtyard", tag: "Zen Courtyard", tall: true },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03708.JPG?tr=w-1200,q-80", alt: "Vibrant evening food court and artisan dining hall", tag: "Food Street", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?tr=w-1200,q-80", alt: "Children's playground and colorful adventure slides", tag: "Play Zone", tall: true },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?tr=w-1200,q-80", alt: "Multi-level atrium architecture and mezzanine bridges", tag: "Architecture", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03704.JPG?tr=w-1200,q-80", alt: "Illuminated rock waterfall and tranquil garden water feature", tag: "Waterfall Wall", tall: true },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?tr=w-1200,q-80", alt: "Canopied rooftop terrace open space for celebrations", tag: "Event Terrace", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03695.JPG?tr=w-1200,q-80", alt: "Open-air movie screening under tensile canopy", tag: "Movie Nights", tall: false },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03693.JPG?tr=w-1200,q-80", alt: "Botanical green walkway with warm lighting columns", tag: "Green Canopy", tall: true },
+  { src: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03650.JPG?tr=w-1200,q-80", alt: "Friends sharing food and memorable moments", tag: "The Community", tall: false },
 ];
 
 export type AmenitySubcategory = {
@@ -234,7 +234,7 @@ export const amenities: Amenity[] = [
       "Safety arrangements",
       "Operating hours and access"
     ],
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?updatedAt=1792739647419"
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03707.JPG?tr=w-1200,q-80"
   },
   {
     id: "pool-table",
@@ -264,7 +264,7 @@ export const amenities: Amenity[] = [
       "Rental details & catering options",
       "Booking procedures"
     ],
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?updatedAt=1792739644887"
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03678.JPG?tr=w-1200,q-80"
   },
   {
     id: "convention-hall",
@@ -282,7 +282,7 @@ export const amenities: Amenity[] = [
       "Event packages",
       "Rental prices and catering options"
     ],
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?updatedAt=1792739645350"
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03726.JPG?tr=w-1200,q-80"
   },
   {
     id: "amphitheatre",
@@ -297,7 +297,7 @@ export const amenities: Amenity[] = [
       "Sound & lighting setup",
       "Event schedules"
     ],
-    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?updatedAt=1792739646490"
+    image: "https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03697.JPG?tr=w-1200,q-80"
   }
 ];
 
