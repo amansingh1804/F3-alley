@@ -97,7 +97,7 @@ export default function Home() {
             </Reveal>
             <Reveal delay={180} className="intro-image-wrap">
               <div className="image-frame intro-image">
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=85" alt="Warmly lit interior of a food hall" loading="lazy" />
+                <img src="https://ik.imagekit.io/7nsyhy1fv/F3/Photos/DSC03708.JPG?updatedAt=1792739649410" alt="Warmly lit food hall dining at F3 Alley" loading="lazy" />
                 <span className="image-caption">Inside the feeling</span>
               </div>
             </Reveal>
