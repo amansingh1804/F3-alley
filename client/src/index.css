@@ -2159,6 +2159,16 @@ h2 em { color: var(--clay); }
     opacity: 0.52;
   }
 
+  .hero-content {
+    padding-bottom: 92px;
+  }
+
+  .hero-scroll-progress {
+    right: 18px;
+    bottom: 90px;
+    height: 58px;
+  }
+
   .gallery-spotlight-section {
     padding: 16px 0 20px;
     overflow-x: hidden;
@@ -2932,7 +2942,8 @@ h2 em { color: var(--clay); }
   .container { max-width: 500px; padding: 0 15px; }
   .section-padding { padding: 72px 0; }
   .intro-section { padding-top: 54px; }
-  .hero-content { padding-top: 100px; padding-bottom: 28px; }
+  .hero-content { padding-top: 100px; padding-bottom: 92px; }
+  .hero-scroll-progress { right: 18px; bottom: 90px; height: 58px; }
   .hero-title { margin-top: 0; padding-top: 0.1em; font-size: clamp(3.5rem, 12vw, 5rem); }
   .hero-bottomline { align-items: start; gap: 25px; }
   .hero-note { flex-direction: column; align-items: flex-end; gap: 12px; }
